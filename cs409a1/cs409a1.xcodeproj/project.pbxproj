@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		61A77F8B1C473566002E8ECC /* DisplayList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F6F1C473566002E8ECC /* DisplayList.cpp */; };
+		61A77F8C1C473566002E8ECC /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F731C473566002E8ECC /* Material.cpp */; };
+		61A77F8D1C473566002E8ECC /* MtlLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F751C473566002E8ECC /* MtlLibrary.cpp */; };
+		61A77F8E1C473566002E8ECC /* MtlLibraryManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F771C473566002E8ECC /* MtlLibraryManager.cpp */; };
+		61A77F8F1C473566002E8ECC /* ObjModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F7A1C473566002E8ECC /* ObjModel.cpp */; };
+		61A77F901C473566002E8ECC /* ObjStringParsing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F7D1C473566002E8ECC /* ObjStringParsing.cpp */; };
+		61A77F911C473566002E8ECC /* SpriteFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F7F1C473566002E8ECC /* SpriteFont.cpp */; };
+		61A77F921C473566002E8ECC /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F811C473566002E8ECC /* Texture.cpp */; };
+		61A77F931C473566002E8ECC /* TextureBmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F831C473566002E8ECC /* TextureBmp.cpp */; };
+		61A77F941C473566002E8ECC /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F851C473566002E8ECC /* TextureManager.cpp */; };
+		61A77F951C473566002E8ECC /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F871C473566002E8ECC /* Vector2.cpp */; };
+		61A77F961C473566002E8ECC /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F891C473566002E8ECC /* Vector3.cpp */; };
+		61A77F9D1C473616002E8ECC /* CoordinateSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F971C473616002E8ECC /* CoordinateSystem.cpp */; };
+		61A77F9E1C473616002E8ECC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F9A1C473616002E8ECC /* main.cpp */; };
+		61A77F9F1C473616002E8ECC /* Sleep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A77F9B1C473616002E8ECC /* Sleep.cpp */; };
+		61A77FA31C47384D002E8ECC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A77FA11C47384D002E8ECC /* GLUT.framework */; };
+		61A77FA41C47384D002E8ECC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A77FA21C47384D002E8ECC /* OpenGL.framework */; };
+		61A77FCD1C473B1B002E8ECC /* Skybox.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FA51C473B1B002E8ECC /* Skybox.obj */; };
+		61A77FCE1C473B1B002E8ECC /* Saturn.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FA61C473B1B002E8ECC /* Saturn.obj */; };
+		61A77FCF1C473B1B002E8ECC /* RingParticleA0.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FA71C473B1B002E8ECC /* RingParticleA0.obj */; };
+		61A77FD01C473B1B002E8ECC /* Ring.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FA81C473B1B002E8ECC /* Ring.obj */; };
+		61A77FD11C473B1B002E8ECC /* MoonJ.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FA91C473B1B002E8ECC /* MoonJ.obj */; };
+		61A77FD21C473B1B002E8ECC /* MoonI.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FAA1C473B1B002E8ECC /* MoonI.obj */; };
+		61A77FD31C473B1B002E8ECC /* MoonH.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FAB1C473B1B002E8ECC /* MoonH.obj */; };
+		61A77FD41C473B1B002E8ECC /* MoonG.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FAC1C473B1B002E8ECC /* MoonG.obj */; };
+		61A77FD51C473B1B002E8ECC /* MoonF.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FAD1C473B1B002E8ECC /* MoonF.obj */; };
+		61A77FD61C473B1B002E8ECC /* MoonE.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FAE1C473B1B002E8ECC /* MoonE.obj */; };
+		61A77FD71C473B1B002E8ECC /* MoonD.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FAF1C473B1B002E8ECC /* MoonD.obj */; };
+		61A77FD81C473B1B002E8ECC /* MoonC.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB01C473B1B002E8ECC /* MoonC.obj */; };
+		61A77FD91C473B1B002E8ECC /* MoonB.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB11C473B1B002E8ECC /* MoonB.obj */; };
+		61A77FDA1C473B1B002E8ECC /* MoonA.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB21C473B1B002E8ECC /* MoonA.obj */; };
+		61A77FDB1C473B1B002E8ECC /* Missile.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB31C473B1B002E8ECC /* Missile.obj */; };
+		61A77FDC1C473B1B002E8ECC /* Grapple.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB41C473B1B002E8ECC /* Grapple.obj */; };
+		61A77FDD1C473B1B002E8ECC /* Bolt.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB51C473B1B002E8ECC /* Bolt.obj */; };
+		61A77FDE1C473B1B002E8ECC /* skybox1.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB61C473B1B002E8ECC /* skybox1.bmp */; };
+		61A77FDF1C473B1B002E8ECC /* saturn.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB71C473B1B002E8ECC /* saturn.bmp */; };
+		61A77FE01C473B1B002E8ECC /* ring.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB81C473B1B002E8ECC /* ring.bmp */; };
+		61A77FE11C473B1B002E8ECC /* ring_particleA.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FB91C473B1B002E8ECC /* ring_particleA.bmp */; };
+		61A77FE21C473B1B002E8ECC /* MoonJ.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FBA1C473B1B002E8ECC /* MoonJ.bmp */; };
+		61A77FE31C473B1B002E8ECC /* MoonI.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FBB1C473B1B002E8ECC /* MoonI.bmp */; };
+		61A77FE41C473B1B002E8ECC /* MoonH.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FBC1C473B1B002E8ECC /* MoonH.bmp */; };
+		61A77FE51C473B1B002E8ECC /* MoonG.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FBD1C473B1B002E8ECC /* MoonG.bmp */; };
+		61A77FE61C473B1B002E8ECC /* MoonF.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FBE1C473B1B002E8ECC /* MoonF.bmp */; };
+		61A77FE71C473B1B002E8ECC /* MoonE.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FBF1C473B1B002E8ECC /* MoonE.bmp */; };
+		61A77FE81C473B1B002E8ECC /* MoonD.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC01C473B1B002E8ECC /* MoonD.bmp */; };
+		61A77FE91C473B1B002E8ECC /* MoonC.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC11C473B1B002E8ECC /* MoonC.bmp */; };
+		61A77FEA1C473B1B002E8ECC /* MoonB.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC21C473B1B002E8ECC /* MoonB.bmp */; };
+		61A77FEB1C473B1B002E8ECC /* MoonA.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC31C473B1B002E8ECC /* MoonA.bmp */; };
+		61A77FEC1C473B1B002E8ECC /* Missile-Red.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC41C473B1B002E8ECC /* Missile-Red.bmp */; };
+		61A77FED1C473B1B002E8ECC /* Grapple-Red.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC51C473B1B002E8ECC /* Grapple-Red.bmp */; };
+		61A77FEE1C473B1B002E8ECC /* Skybox.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC61C473B1B002E8ECC /* Skybox.mtl */; };
+		61A77FEF1C473B1B002E8ECC /* Saturn.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC71C473B1B002E8ECC /* Saturn.mtl */; };
+		61A77FF01C473B1B002E8ECC /* RingParticles.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC81C473B1B002E8ECC /* RingParticles.mtl */; };
+		61A77FF11C473B1B002E8ECC /* Moons.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FC91C473B1B002E8ECC /* Moons.mtl */; };
+		61A77FF21C473B1B002E8ECC /* Missile.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FCA1C473B1B002E8ECC /* Missile.mtl */; };
+		61A77FF31C473B1B002E8ECC /* Grapple.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FCB1C473B1B002E8ECC /* Grapple.mtl */; };
+		61A77FF41C473B1B002E8ECC /* Bolt.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A77FCC1C473B1B002E8ECC /* Bolt.mtl */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		61A77F621C473510002E8ECC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = Models;
+			dstSubfolderSpec = 16;
+			files = (
+				61A77FCD1C473B1B002E8ECC /* Skybox.obj in CopyFiles */,
+				61A77FCE1C473B1B002E8ECC /* Saturn.obj in CopyFiles */,
+				61A77FCF1C473B1B002E8ECC /* RingParticleA0.obj in CopyFiles */,
+				61A77FD01C473B1B002E8ECC /* Ring.obj in CopyFiles */,
+				61A77FD11C473B1B002E8ECC /* MoonJ.obj in CopyFiles */,
+				61A77FD21C473B1B002E8ECC /* MoonI.obj in CopyFiles */,
+				61A77FD31C473B1B002E8ECC /* MoonH.obj in CopyFiles */,
+				61A77FD41C473B1B002E8ECC /* MoonG.obj in CopyFiles */,
+				61A77FD51C473B1B002E8ECC /* MoonF.obj in CopyFiles */,
+				61A77FD61C473B1B002E8ECC /* MoonE.obj in CopyFiles */,
+				61A77FD71C473B1B002E8ECC /* MoonD.obj in CopyFiles */,
+				61A77FD81C473B1B002E8ECC /* MoonC.obj in CopyFiles */,
+				61A77FD91C473B1B002E8ECC /* MoonB.obj in CopyFiles */,
+				61A77FDA1C473B1B002E8ECC /* MoonA.obj in CopyFiles */,
+				61A77FDB1C473B1B002E8ECC /* Missile.obj in CopyFiles */,
+				61A77FDC1C473B1B002E8ECC /* Grapple.obj in CopyFiles */,
+				61A77FDD1C473B1B002E8ECC /* Bolt.obj in CopyFiles */,
+				61A77FDE1C473B1B002E8ECC /* skybox1.bmp in CopyFiles */,
+				61A77FDF1C473B1B002E8ECC /* saturn.bmp in CopyFiles */,
+				61A77FE01C473B1B002E8ECC /* ring.bmp in CopyFiles */,
+				61A77FE11C473B1B002E8ECC /* ring_particleA.bmp in CopyFiles */,
+				61A77FE21C473B1B002E8ECC /* MoonJ.bmp in CopyFiles */,
+				61A77FE31C473B1B002E8ECC /* MoonI.bmp in CopyFiles */,
+				61A77FE41C473B1B002E8ECC /* MoonH.bmp in CopyFiles */,
+				61A77FE51C473B1B002E8ECC /* MoonG.bmp in CopyFiles */,
+				61A77FE61C473B1B002E8ECC /* MoonF.bmp in CopyFiles */,
+				61A77FE71C473B1B002E8ECC /* MoonE.bmp in CopyFiles */,
+				61A77FE81C473B1B002E8ECC /* MoonD.bmp in CopyFiles */,
+				61A77FE91C473B1B002E8ECC /* MoonC.bmp in CopyFiles */,
+				61A77FEA1C473B1B002E8ECC /* MoonB.bmp in CopyFiles */,
+				61A77FEB1C473B1B002E8ECC /* MoonA.bmp in CopyFiles */,
+				61A77FEC1C473B1B002E8ECC /* Missile-Red.bmp in CopyFiles */,
+				61A77FED1C473B1B002E8ECC /* Grapple-Red.bmp in CopyFiles */,
+				61A77FEE1C473B1B002E8ECC /* Skybox.mtl in CopyFiles */,
+				61A77FEF1C473B1B002E8ECC /* Saturn.mtl in CopyFiles */,
+				61A77FF01C473B1B002E8ECC /* RingParticles.mtl in CopyFiles */,
+				61A77FF11C473B1B002E8ECC /* Moons.mtl in CopyFiles */,
+				61A77FF21C473B1B002E8ECC /* Missile.mtl in CopyFiles */,
+				61A77FF31C473B1B002E8ECC /* Grapple.mtl in CopyFiles */,
+				61A77FF41C473B1B002E8ECC /* Bolt.mtl in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		61A77F641C473510002E8ECC /* cs409a1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cs409a1; sourceTree = BUILT_PRODUCTS_DIR; };
+		61A77F6F1C473566002E8ECC /* DisplayList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayList.cpp; sourceTree = "<group>"; };
+		61A77F701C473566002E8ECC /* DisplayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayList.h; sourceTree = "<group>"; };
+		61A77F711C473566002E8ECC /* GetGlut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetGlut.h; sourceTree = "<group>"; };
+		61A77F721C473566002E8ECC /* GLUT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUT.h; sourceTree = "<group>"; };
+		61A77F731C473566002E8ECC /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
+		61A77F741C473566002E8ECC /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
+		61A77F751C473566002E8ECC /* MtlLibrary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MtlLibrary.cpp; sourceTree = "<group>"; };
+		61A77F761C473566002E8ECC /* MtlLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MtlLibrary.h; sourceTree = "<group>"; };
+		61A77F771C473566002E8ECC /* MtlLibraryManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MtlLibraryManager.cpp; sourceTree = "<group>"; };
+		61A77F781C473566002E8ECC /* MtlLibraryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MtlLibraryManager.h; sourceTree = "<group>"; };
+		61A77F791C473566002E8ECC /* ObjLibrary-development-log.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ObjLibrary-development-log.txt"; sourceTree = "<group>"; };
+		61A77F7A1C473566002E8ECC /* ObjModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjModel.cpp; sourceTree = "<group>"; };
+		61A77F7B1C473566002E8ECC /* ObjModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjModel.h; sourceTree = "<group>"; };
+		61A77F7C1C473566002E8ECC /* ObjSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjSettings.h; sourceTree = "<group>"; };
+		61A77F7D1C473566002E8ECC /* ObjStringParsing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjStringParsing.cpp; sourceTree = "<group>"; };
+		61A77F7E1C473566002E8ECC /* ObjStringParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjStringParsing.h; sourceTree = "<group>"; };
+		61A77F7F1C473566002E8ECC /* SpriteFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteFont.cpp; sourceTree = "<group>"; };
+		61A77F801C473566002E8ECC /* SpriteFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteFont.h; sourceTree = "<group>"; };
+		61A77F811C473566002E8ECC /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		61A77F821C473566002E8ECC /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		61A77F831C473566002E8ECC /* TextureBmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureBmp.cpp; sourceTree = "<group>"; };
+		61A77F841C473566002E8ECC /* TextureBmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBmp.h; sourceTree = "<group>"; };
+		61A77F851C473566002E8ECC /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
+		61A77F861C473566002E8ECC /* TextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureManager.h; sourceTree = "<group>"; };
+		61A77F871C473566002E8ECC /* Vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2.cpp; sourceTree = "<group>"; };
+		61A77F881C473566002E8ECC /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
+		61A77F891C473566002E8ECC /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
+		61A77F8A1C473566002E8ECC /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
+		61A77F971C473616002E8ECC /* CoordinateSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoordinateSystem.cpp; sourceTree = "<group>"; };
+		61A77F981C473616002E8ECC /* CoordinateSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateSystem.h; sourceTree = "<group>"; };
+		61A77F991C473616002E8ECC /* GetGlut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetGlut.h; sourceTree = "<group>"; };
+		61A77F9A1C473616002E8ECC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		61A77F9B1C473616002E8ECC /* Sleep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sleep.cpp; sourceTree = "<group>"; };
+		61A77F9C1C473616002E8ECC /* Sleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sleep.h; sourceTree = "<group>"; };
+		61A77FA11C47384D002E8ECC /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		61A77FA21C47384D002E8ECC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		61A77FA51C473B1B002E8ECC /* Skybox.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = Skybox.obj; path = cs409a1/Models/Skybox.obj; sourceTree = "<group>"; };
+		61A77FA61C473B1B002E8ECC /* Saturn.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = Saturn.obj; path = cs409a1/Models/Saturn.obj; sourceTree = "<group>"; };
+		61A77FA71C473B1B002E8ECC /* RingParticleA0.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = RingParticleA0.obj; path = cs409a1/Models/RingParticleA0.obj; sourceTree = "<group>"; };
+		61A77FA81C473B1B002E8ECC /* Ring.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = Ring.obj; path = cs409a1/Models/Ring.obj; sourceTree = "<group>"; };
+		61A77FA91C473B1B002E8ECC /* MoonJ.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonJ.obj; path = cs409a1/Models/MoonJ.obj; sourceTree = "<group>"; };
+		61A77FAA1C473B1B002E8ECC /* MoonI.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonI.obj; path = cs409a1/Models/MoonI.obj; sourceTree = "<group>"; };
+		61A77FAB1C473B1B002E8ECC /* MoonH.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonH.obj; path = cs409a1/Models/MoonH.obj; sourceTree = "<group>"; };
+		61A77FAC1C473B1B002E8ECC /* MoonG.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonG.obj; path = cs409a1/Models/MoonG.obj; sourceTree = "<group>"; };
+		61A77FAD1C473B1B002E8ECC /* MoonF.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonF.obj; path = cs409a1/Models/MoonF.obj; sourceTree = "<group>"; };
+		61A77FAE1C473B1B002E8ECC /* MoonE.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonE.obj; path = cs409a1/Models/MoonE.obj; sourceTree = "<group>"; };
+		61A77FAF1C473B1B002E8ECC /* MoonD.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonD.obj; path = cs409a1/Models/MoonD.obj; sourceTree = "<group>"; };
+		61A77FB01C473B1B002E8ECC /* MoonC.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonC.obj; path = cs409a1/Models/MoonC.obj; sourceTree = "<group>"; };
+		61A77FB11C473B1B002E8ECC /* MoonB.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonB.obj; path = cs409a1/Models/MoonB.obj; sourceTree = "<group>"; };
+		61A77FB21C473B1B002E8ECC /* MoonA.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = MoonA.obj; path = cs409a1/Models/MoonA.obj; sourceTree = "<group>"; };
+		61A77FB31C473B1B002E8ECC /* Missile.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = Missile.obj; path = cs409a1/Models/Missile.obj; sourceTree = "<group>"; };
+		61A77FB41C473B1B002E8ECC /* Grapple.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = Grapple.obj; path = cs409a1/Models/Grapple.obj; sourceTree = "<group>"; };
+		61A77FB51C473B1B002E8ECC /* Bolt.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = Bolt.obj; path = cs409a1/Models/Bolt.obj; sourceTree = "<group>"; };
+		61A77FB61C473B1B002E8ECC /* skybox1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = skybox1.bmp; path = cs409a1/Models/skybox1.bmp; sourceTree = "<group>"; };
+		61A77FB71C473B1B002E8ECC /* saturn.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = saturn.bmp; path = cs409a1/Models/saturn.bmp; sourceTree = "<group>"; };
+		61A77FB81C473B1B002E8ECC /* ring.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = ring.bmp; path = cs409a1/Models/ring.bmp; sourceTree = "<group>"; };
+		61A77FB91C473B1B002E8ECC /* ring_particleA.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = ring_particleA.bmp; path = cs409a1/Models/ring_particleA.bmp; sourceTree = "<group>"; };
+		61A77FBA1C473B1B002E8ECC /* MoonJ.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonJ.bmp; path = cs409a1/Models/MoonJ.bmp; sourceTree = "<group>"; };
+		61A77FBB1C473B1B002E8ECC /* MoonI.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonI.bmp; path = cs409a1/Models/MoonI.bmp; sourceTree = "<group>"; };
+		61A77FBC1C473B1B002E8ECC /* MoonH.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonH.bmp; path = cs409a1/Models/MoonH.bmp; sourceTree = "<group>"; };
+		61A77FBD1C473B1B002E8ECC /* MoonG.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonG.bmp; path = cs409a1/Models/MoonG.bmp; sourceTree = "<group>"; };
+		61A77FBE1C473B1B002E8ECC /* MoonF.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonF.bmp; path = cs409a1/Models/MoonF.bmp; sourceTree = "<group>"; };
+		61A77FBF1C473B1B002E8ECC /* MoonE.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonE.bmp; path = cs409a1/Models/MoonE.bmp; sourceTree = "<group>"; };
+		61A77FC01C473B1B002E8ECC /* MoonD.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonD.bmp; path = cs409a1/Models/MoonD.bmp; sourceTree = "<group>"; };
+		61A77FC11C473B1B002E8ECC /* MoonC.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonC.bmp; path = cs409a1/Models/MoonC.bmp; sourceTree = "<group>"; };
+		61A77FC21C473B1B002E8ECC /* MoonB.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonB.bmp; path = cs409a1/Models/MoonB.bmp; sourceTree = "<group>"; };
+		61A77FC31C473B1B002E8ECC /* MoonA.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = MoonA.bmp; path = cs409a1/Models/MoonA.bmp; sourceTree = "<group>"; };
+		61A77FC41C473B1B002E8ECC /* Missile-Red.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = "Missile-Red.bmp"; path = "cs409a1/Models/Missile-Red.bmp"; sourceTree = "<group>"; };
+		61A77FC51C473B1B002E8ECC /* Grapple-Red.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = "Grapple-Red.bmp"; path = "cs409a1/Models/Grapple-Red.bmp"; sourceTree = "<group>"; };
+		61A77FC61C473B1B002E8ECC /* Skybox.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Skybox.mtl; path = cs409a1/Models/Skybox.mtl; sourceTree = "<group>"; };
+		61A77FC71C473B1B002E8ECC /* Saturn.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Saturn.mtl; path = cs409a1/Models/Saturn.mtl; sourceTree = "<group>"; };
+		61A77FC81C473B1B002E8ECC /* RingParticles.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; name = RingParticles.mtl; path = cs409a1/Models/RingParticles.mtl; sourceTree = "<group>"; };
+		61A77FC91C473B1B002E8ECC /* Moons.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Moons.mtl; path = cs409a1/Models/Moons.mtl; sourceTree = "<group>"; };
+		61A77FCA1C473B1B002E8ECC /* Missile.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Missile.mtl; path = cs409a1/Models/Missile.mtl; sourceTree = "<group>"; };
+		61A77FCB1C473B1B002E8ECC /* Grapple.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Grapple.mtl; path = cs409a1/Models/Grapple.mtl; sourceTree = "<group>"; };
+		61A77FCC1C473B1B002E8ECC /* Bolt.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Bolt.mtl; path = cs409a1/Models/Bolt.mtl; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61A77F611C473510002E8ECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61A77FA31C47384D002E8ECC /* GLUT.framework in Frameworks */,
+				61A77FA41C47384D002E8ECC /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61A77F5B1C473510002E8ECC = {
+			isa = PBXGroup;
+			children = (
+				61A77FA11C47384D002E8ECC /* GLUT.framework */,
+				61A77FA21C47384D002E8ECC /* OpenGL.framework */,
+				61A77F6E1C473566002E8ECC /* ObjLibrary */,
+				61A77F661C473510002E8ECC /* cs409a1 */,
+				61A77FF51C473B36002E8ECC /* Models */,
+				61A77F651C473510002E8ECC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61A77F651C473510002E8ECC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61A77F641C473510002E8ECC /* cs409a1 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61A77F661C473510002E8ECC /* cs409a1 */ = {
+			isa = PBXGroup;
+			children = (
+				61A77F971C473616002E8ECC /* CoordinateSystem.cpp */,
+				61A77F981C473616002E8ECC /* CoordinateSystem.h */,
+				61A77F991C473616002E8ECC /* GetGlut.h */,
+				61A77F9A1C473616002E8ECC /* main.cpp */,
+				61A77F9B1C473616002E8ECC /* Sleep.cpp */,
+				61A77F9C1C473616002E8ECC /* Sleep.h */,
+			);
+			path = cs409a1;
+			sourceTree = "<group>";
+		};
+		61A77F6E1C473566002E8ECC /* ObjLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				61A77F6F1C473566002E8ECC /* DisplayList.cpp */,
+				61A77F701C473566002E8ECC /* DisplayList.h */,
+				61A77F711C473566002E8ECC /* GetGlut.h */,
+				61A77F721C473566002E8ECC /* GLUT.h */,
+				61A77F731C473566002E8ECC /* Material.cpp */,
+				61A77F741C473566002E8ECC /* Material.h */,
+				61A77F751C473566002E8ECC /* MtlLibrary.cpp */,
+				61A77F761C473566002E8ECC /* MtlLibrary.h */,
+				61A77F771C473566002E8ECC /* MtlLibraryManager.cpp */,
+				61A77F781C473566002E8ECC /* MtlLibraryManager.h */,
+				61A77F791C473566002E8ECC /* ObjLibrary-development-log.txt */,
+				61A77F7A1C473566002E8ECC /* ObjModel.cpp */,
+				61A77F7B1C473566002E8ECC /* ObjModel.h */,
+				61A77F7C1C473566002E8ECC /* ObjSettings.h */,
+				61A77F7D1C473566002E8ECC /* ObjStringParsing.cpp */,
+				61A77F7E1C473566002E8ECC /* ObjStringParsing.h */,
+				61A77F7F1C473566002E8ECC /* SpriteFont.cpp */,
+				61A77F801C473566002E8ECC /* SpriteFont.h */,
+				61A77F811C473566002E8ECC /* Texture.cpp */,
+				61A77F821C473566002E8ECC /* Texture.h */,
+				61A77F831C473566002E8ECC /* TextureBmp.cpp */,
+				61A77F841C473566002E8ECC /* TextureBmp.h */,
+				61A77F851C473566002E8ECC /* TextureManager.cpp */,
+				61A77F861C473566002E8ECC /* TextureManager.h */,
+				61A77F871C473566002E8ECC /* Vector2.cpp */,
+				61A77F881C473566002E8ECC /* Vector2.h */,
+				61A77F891C473566002E8ECC /* Vector3.cpp */,
+				61A77F8A1C473566002E8ECC /* Vector3.h */,
+			);
+			name = ObjLibrary;
+			path = ../ObjLibrary;
+			sourceTree = "<group>";
+		};
+		61A77FF51C473B36002E8ECC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61A77FA51C473B1B002E8ECC /* Skybox.obj */,
+				61A77FA61C473B1B002E8ECC /* Saturn.obj */,
+				61A77FA71C473B1B002E8ECC /* RingParticleA0.obj */,
+				61A77FA81C473B1B002E8ECC /* Ring.obj */,
+				61A77FA91C473B1B002E8ECC /* MoonJ.obj */,
+				61A77FAA1C473B1B002E8ECC /* MoonI.obj */,
+				61A77FAB1C473B1B002E8ECC /* MoonH.obj */,
+				61A77FAC1C473B1B002E8ECC /* MoonG.obj */,
+				61A77FAD1C473B1B002E8ECC /* MoonF.obj */,
+				61A77FAE1C473B1B002E8ECC /* MoonE.obj */,
+				61A77FAF1C473B1B002E8ECC /* MoonD.obj */,
+				61A77FB01C473B1B002E8ECC /* MoonC.obj */,
+				61A77FB11C473B1B002E8ECC /* MoonB.obj */,
+				61A77FB21C473B1B002E8ECC /* MoonA.obj */,
+				61A77FB31C473B1B002E8ECC /* Missile.obj */,
+				61A77FB41C473B1B002E8ECC /* Grapple.obj */,
+				61A77FB51C473B1B002E8ECC /* Bolt.obj */,
+				61A77FB61C473B1B002E8ECC /* skybox1.bmp */,
+				61A77FB71C473B1B002E8ECC /* saturn.bmp */,
+				61A77FB81C473B1B002E8ECC /* ring.bmp */,
+				61A77FB91C473B1B002E8ECC /* ring_particleA.bmp */,
+				61A77FBA1C473B1B002E8ECC /* MoonJ.bmp */,
+				61A77FBB1C473B1B002E8ECC /* MoonI.bmp */,
+				61A77FBC1C473B1B002E8ECC /* MoonH.bmp */,
+				61A77FBD1C473B1B002E8ECC /* MoonG.bmp */,
+				61A77FBE1C473B1B002E8ECC /* MoonF.bmp */,
+				61A77FBF1C473B1B002E8ECC /* MoonE.bmp */,
+				61A77FC01C473B1B002E8ECC /* MoonD.bmp */,
+				61A77FC11C473B1B002E8ECC /* MoonC.bmp */,
+				61A77FC21C473B1B002E8ECC /* MoonB.bmp */,
+				61A77FC31C473B1B002E8ECC /* MoonA.bmp */,
+				61A77FC41C473B1B002E8ECC /* Missile-Red.bmp */,
+				61A77FC51C473B1B002E8ECC /* Grapple-Red.bmp */,
+				61A77FC61C473B1B002E8ECC /* Skybox.mtl */,
+				61A77FC71C473B1B002E8ECC /* Saturn.mtl */,
+				61A77FC81C473B1B002E8ECC /* RingParticles.mtl */,
+				61A77FC91C473B1B002E8ECC /* Moons.mtl */,
+				61A77FCA1C473B1B002E8ECC /* Missile.mtl */,
+				61A77FCB1C473B1B002E8ECC /* Grapple.mtl */,
+				61A77FCC1C473B1B002E8ECC /* Bolt.mtl */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61A77F631C473510002E8ECC /* cs409a1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61A77F6B1C473510002E8ECC /* Build configuration list for PBXNativeTarget "cs409a1" */;
+			buildPhases = (
+				61A77F601C473510002E8ECC /* Sources */,
+				61A77F611C473510002E8ECC /* Frameworks */,
+				61A77F621C473510002E8ECC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cs409a1;
+			productName = cs409a1;
+			productReference = 61A77F641C473510002E8ECC /* cs409a1 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61A77F5C1C473510002E8ECC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Brayden Streibel";
+				TargetAttributes = {
+					61A77F631C473510002E8ECC = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 61A77F5F1C473510002E8ECC /* Build configuration list for PBXProject "cs409a1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 61A77F5B1C473510002E8ECC;
+			productRefGroup = 61A77F651C473510002E8ECC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61A77F631C473510002E8ECC /* cs409a1 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61A77F601C473510002E8ECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61A77F8D1C473566002E8ECC /* MtlLibrary.cpp in Sources */,
+				61A77F901C473566002E8ECC /* ObjStringParsing.cpp in Sources */,
+				61A77F951C473566002E8ECC /* Vector2.cpp in Sources */,
+				61A77F9E1C473616002E8ECC /* main.cpp in Sources */,
+				61A77F8C1C473566002E8ECC /* Material.cpp in Sources */,
+				61A77F9F1C473616002E8ECC /* Sleep.cpp in Sources */,
+				61A77F911C473566002E8ECC /* SpriteFont.cpp in Sources */,
+				61A77F8B1C473566002E8ECC /* DisplayList.cpp in Sources */,
+				61A77F921C473566002E8ECC /* Texture.cpp in Sources */,
+				61A77F931C473566002E8ECC /* TextureBmp.cpp in Sources */,
+				61A77F9D1C473616002E8ECC /* CoordinateSystem.cpp in Sources */,
+				61A77F8F1C473566002E8ECC /* ObjModel.cpp in Sources */,
+				61A77F8E1C473566002E8ECC /* MtlLibraryManager.cpp in Sources */,
+				61A77F961C473566002E8ECC /* Vector3.cpp in Sources */,
+				61A77F941C473566002E8ECC /* TextureManager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		61A77F691C473510002E8ECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		61A77F6A1C473510002E8ECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		61A77F6C1C473510002E8ECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61A77F6D1C473510002E8ECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61A77F5F1C473510002E8ECC /* Build configuration list for PBXProject "cs409a1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61A77F691C473510002E8ECC /* Debug */,
+				61A77F6A1C473510002E8ECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61A77F6B1C473510002E8ECC /* Build configuration list for PBXNativeTarget "cs409a1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61A77F6C1C473510002E8ECC /* Debug */,
+				61A77F6D1C473510002E8ECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61A77F5C1C473510002E8ECC /* Project object */;
+}
