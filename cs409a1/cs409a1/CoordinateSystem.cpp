@@ -105,7 +105,7 @@ void CoordinateSystem::reset()
 {
     forward = Vector3(0, 0, -1);
     up = Vector3(0, 1, 0);
-    position = Vector3(0, 0, 0);
+    position = Vector3(70000.0, 0.0, 70000.0);
 }
 
 void CoordinateSystem::setCamera()
