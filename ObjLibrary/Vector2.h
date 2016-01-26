@@ -535,13 +535,38 @@ public:
 //  isZero
 //
 //  Purpose: To determine if this Vector2 is the zero vector.
+//           There is a very small tolerance to ensure that the
+//           norm of this Vector2 (which involves squaring the
+//           value) will not be 0.0 do to limitations of the
+//           representation.  If you need to test if a Vector2
+//           is exactly zero, use the isZeroStrict function.
 //  Parameter(s): N/A
 //  Precondition(s): N/A
-//  Returns: Whether this Vector2 is equal to (0.0, 0.0).
+//  Returns: Whether this Vector2 is within 1.0e-100 inclusive
+//           of (0.0, 0.0, 0.0) in each component.
 //  Side Effect: N/A
 //
 
 	bool isZero () const
+	{
+		if(fabs(x) > 1.0e-100) return false;
+		if(fabs(y) > 1.0e-100) return false;
+		return true;
+	}
+
+//
+//  isZeroStrict
+//
+//  Purpose: To determine if all components of this Vector2 are
+//           exactly 0.0.  To avoid floating point rounding
+//           errors, consider using isZero instead.
+//  Parameter(s): N/A
+//  Precondition(s): N/A
+//  Returns: Whether this Vector2 is equal to (0.0, 0.0, 0.0).
+//  Side Effect: N/A
+//
+
+	bool isZeroStrict () const
 	{
 		if(x != 0.0) return false;
 		if(y != 0.0) return false;
@@ -1278,6 +1303,7 @@ public:
 
 		if(isZero())
 			return Vector2();
+
 		assert(getNorm() != 0.0);
 		double norm_ratio = norm / getNorm();
 		return Vector2(x * norm_ratio, y * norm_ratio);
@@ -1697,7 +1723,6 @@ public:
 		assert(isFinite());
 		assert(other.isFinite());
 		assert(isParallel(other));
-		assert(!other.isZero());
 
 		if(other.x != 0.0)
 			return x / other.x;
@@ -2178,6 +2203,7 @@ public:
 		assert(!project_onto.isZero());
 
 		double dot_product = dotProduct(project_onto);
+		assert(project_onto.getNormSquared() != 0.0);
 		double norm = dot_product /
 		              project_onto.getNormSquared();
 

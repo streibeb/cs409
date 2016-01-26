@@ -180,6 +180,8 @@ double Vector3 :: getCosAngle (const Vector3& other) const
 	assert(other.isFinite());
 	assert(!other.isZero());
 
+	assert(getNorm() != 0.0);
+	assert(other.getNorm() != 0.0);
 	double ratio = dotProduct(other) / (getNorm() * other.getNorm());
 
 	//  In theory, ratio should always be in the range [-1, 1].
@@ -206,9 +208,11 @@ double Vector3 :: getCosAngleSafe (const Vector3& other) const
 	assert(isFinite());
 	assert(other.isFinite());
 
-	if(isZero() ||other.isZero())
+	if(isZero() || other.isZero())
 		return 1.0;
 
+	assert(getNorm() != 0.0);
+	assert(other.getNorm() != 0.0);
 	double ratio = dotProduct(other) / (getNorm() * other.getNorm());
 
 	//  In theory, ratio should always be in the range [-1, 1].
@@ -223,6 +227,8 @@ double Vector3 :: getAngle (const Vector3& other) const
 	assert(other.isFinite());
 	assert(!other.isZero());
 
+	assert(getNorm() != 0.0);
+	assert(other.getNorm() != 0.0);
 	double ratio = dotProduct(other) / (getNorm() * other.getNorm());
 
 	//  In theory, ratio should always be in the range [-1, 1].
@@ -249,9 +255,11 @@ double Vector3 :: getAngleSafe (const Vector3& other) const
 	assert(isFinite());
 	assert(other.isFinite());
 
-	if(isZero() ||other.isZero())
+	if(isZero() || other.isZero())
 		return 1.0;
 
+	assert(getNorm() != 0.0);
+	assert(other.getNorm() != 0.0);
 	double ratio = dotProduct(other) / (getNorm() * other.getNorm());
 
 	//  In theory, ratio should always be in the range [-1, 1].

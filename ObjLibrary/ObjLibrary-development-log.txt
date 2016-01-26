@@ -670,6 +670,15 @@ Released to CS809
 
 
 
+2016 January 16
+---------------
+
+1. Removed incorrect assert in getNormRatioSafe in Vector2/3 that required the second vector to be non-zero.  *Safe version should handle zero vectors.
+2. Added asserts to getCosAngle, getCosAngleSafe, getAngle, and getAngleSafe in Vector2/3 to ensure that norms are non-zero.
+3. Added asserts to getProjection in Vector2/3 to ensure that norm of vector projected onto is non-zero.
+4. The isZero function in Vector2/3 now reports true if all components are anywhere in the range [-1.0e-100, 1.0e-100].  This prevents non-zero vectors from having norms of zero.  The original functionality is available as the isZeroStrit function.
+
+
 
 
 TODO: Fix TextureBmp to load images with alpha channel correctly
@@ -678,5 +687,6 @@ TODO: Strip quotation marks from file names - especially internally-specified MT
 TODO: Put everything in a namespace
 TODO: Combine meshes with the same material in ObjModel
 TODO: Add rotateTowards to Vector2 and Vector3 that takes a desired direction and a max angle.  Vector3 needs variants for full 3D, around principle axes, and around arbitrary axis.
+TODO: Add isDistanceXYLessThan, etc. functions to Vector3.
 
 TODO: Queue, Stack .cpp ==> .inl (replace these with STL versions?)
