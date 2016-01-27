@@ -13,6 +13,7 @@
 // amongst all assignments
 #include "../../ObjLibrary/ObjModel.h"
 #include "CoordinateSystem.h"
+#include "RingParticles.h"
 
 void init();
 void initDisplay();
@@ -65,6 +66,9 @@ objectInfo ringInfo = {
 bool key_pressed[256];
 bool special_key_pressed[128];
 
+// Ring particles
+RingParticles* particles;
+
 int main(int argc, char* argv[])
 {
 	glutInitWindowSize(640, 480);
@@ -109,6 +113,8 @@ void init()
         moons[i].load(moonInfo[i].filename);
     }
     ring.load(ringInfo.filename);
+    
+    particles = new RingParticles(4, 500, 1);
 }
 
 void initDisplay()
@@ -271,6 +277,9 @@ void display()
             moons[i].draw();
         glPopMatrix();
     }
+    
+    particles->calculateNearbySectors(camera.getPosition());
+    particles->DrawNearbySectors();
     
     // Draw rings
     glPushMatrix();
