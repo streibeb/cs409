@@ -103,9 +103,9 @@ Vector3 CoordinateSystem::getPosition()
 
 void CoordinateSystem::reset()
 {
-    forward = Vector3(0, 0, -1);
-    up = Vector3(0, 1, 0);
-    position = Vector3(70000.0, 0.0, 70000.0);
+    forward = {0, 0, -1};
+    up = {0, 1, 0};
+    position = {70000.0, 0.0, 70000.0};
 }
 
 void CoordinateSystem::setCamera()

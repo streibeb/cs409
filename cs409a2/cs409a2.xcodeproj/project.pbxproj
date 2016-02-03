@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		619D96C71C5B0F9800E3AA6D /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 619D96C51C5B0F9800E3AA6D /* World.cpp */; };
 		61C81CF41C571BC3001732B0 /* Sleep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61C81CEF1C571BC3001732B0 /* Sleep.cpp */; };
 		61C81CF51C571BC3001732B0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61C81CF01C571BC3001732B0 /* main.cpp */; };
 		61C81CF61C571BC3001732B0 /* CoordinateSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61C81CF31C571BC3001732B0 /* CoordinateSystem.cpp */; };
@@ -64,6 +65,7 @@
 		61C81D731C571CC8001732B0 /* Skybox.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61C81D4A1C571C2C001732B0 /* Skybox.mtl */; };
 		61C81D741C571CC8001732B0 /* Skybox.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61C81D4B1C571C2C001732B0 /* Skybox.obj */; };
 		61C81D751C571CC8001732B0 /* skybox1.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61C81D4C1C571C2C001732B0 /* skybox1.bmp */; };
+		61C81D791C571E15001732B0 /* Sector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61C81D771C571E15001732B0 /* Sector.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -119,6 +121,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		619D96C51C5B0F9800E3AA6D /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		619D96C61C5B0F9800E3AA6D /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		61C81CE41C571B98001732B0 /* cs409a2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cs409a2; sourceTree = BUILT_PRODUCTS_DIR; };
 		61C81CEE1C571BC3001732B0 /* Sleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sleep.h; sourceTree = "<group>"; };
 		61C81CEF1C571BC3001732B0 /* Sleep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sleep.cpp; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 		61C81D4B1C571C2C001732B0 /* Skybox.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Skybox.obj; sourceTree = "<group>"; };
 		61C81D4C1C571C2C001732B0 /* skybox1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = skybox1.bmp; sourceTree = "<group>"; };
 		61C81D4D1C571C2C001732B0 /* Sources.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sources.txt; sourceTree = "<group>"; };
+		61C81D771C571E15001732B0 /* Sector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sector.cpp; sourceTree = "<group>"; };
+		61C81D781C571E15001732B0 /* Sector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sector.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,10 @@
 				61C81CF11C571BC3001732B0 /* GetGlut.h */,
 				61C81CF21C571BC3001732B0 /* CoordinateSystem.h */,
 				61C81CF31C571BC3001732B0 /* CoordinateSystem.cpp */,
+				61C81D771C571E15001732B0 /* Sector.cpp */,
+				61C81D781C571E15001732B0 /* Sector.h */,
+				619D96C51C5B0F9800E3AA6D /* World.cpp */,
+				619D96C61C5B0F9800E3AA6D /* World.h */,
 			);
 			path = cs409a2;
 			sourceTree = "<group>";
@@ -395,12 +405,14 @@
 				61C81CF61C571BC3001732B0 /* CoordinateSystem.cpp in Sources */,
 				61C81D1D1C571BDA001732B0 /* TextureManager.cpp in Sources */,
 				61C81CF51C571BC3001732B0 /* main.cpp in Sources */,
+				61C81D791C571E15001732B0 /* Sector.cpp in Sources */,
 				61C81D141C571BDA001732B0 /* DisplayList.cpp in Sources */,
 				61C81D161C571BDA001732B0 /* MtlLibrary.cpp in Sources */,
 				61C81D151C571BDA001732B0 /* Material.cpp in Sources */,
 				61C81D191C571BDA001732B0 /* ObjStringParsing.cpp in Sources */,
 				61C81CF41C571BC3001732B0 /* Sleep.cpp in Sources */,
 				61C81D1B1C571BDA001732B0 /* Texture.cpp in Sources */,
+				619D96C71C5B0F9800E3AA6D /* World.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +531,7 @@
 				61C81CED1C571B98001732B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

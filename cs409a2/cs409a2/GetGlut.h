@@ -13,7 +13,7 @@
 
 #ifndef GET_GLUT_H
 #define GET_GLUT_H
-
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 // Unix
 #ifdef unix
