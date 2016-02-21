@@ -1,0 +1,565 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		61A8DC5A1C72BDA700B792AF /* CoordinateSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC501C72BDA700B792AF /* CoordinateSystem.cpp */; };
+		61A8DC5B1C72BDA700B792AF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC531C72BDA700B792AF /* main.cpp */; };
+		61A8DC5C1C72BDA700B792AF /* Sector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC541C72BDA700B792AF /* Sector.cpp */; };
+		61A8DC5D1C72BDA700B792AF /* Sleep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC561C72BDA700B792AF /* Sleep.cpp */; };
+		61A8DC5E1C72BDA700B792AF /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC581C72BDA700B792AF /* World.cpp */; };
+		61A8DC7C1C72BDB500B792AF /* DisplayList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC601C72BDB500B792AF /* DisplayList.cpp */; };
+		61A8DC7D1C72BDB500B792AF /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC641C72BDB500B792AF /* Material.cpp */; };
+		61A8DC7E1C72BDB500B792AF /* MtlLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC661C72BDB500B792AF /* MtlLibrary.cpp */; };
+		61A8DC7F1C72BDB500B792AF /* MtlLibraryManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC681C72BDB500B792AF /* MtlLibraryManager.cpp */; };
+		61A8DC801C72BDB500B792AF /* ObjModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC6B1C72BDB500B792AF /* ObjModel.cpp */; };
+		61A8DC811C72BDB500B792AF /* ObjStringParsing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC6E1C72BDB500B792AF /* ObjStringParsing.cpp */; };
+		61A8DC821C72BDB500B792AF /* SpriteFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC701C72BDB500B792AF /* SpriteFont.cpp */; };
+		61A8DC831C72BDB500B792AF /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC721C72BDB500B792AF /* Texture.cpp */; };
+		61A8DC841C72BDB500B792AF /* TextureBmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC741C72BDB500B792AF /* TextureBmp.cpp */; };
+		61A8DC851C72BDB500B792AF /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC761C72BDB500B792AF /* TextureManager.cpp */; };
+		61A8DC861C72BDB500B792AF /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC781C72BDB500B792AF /* Vector2.cpp */; };
+		61A8DC871C72BDB500B792AF /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC7A1C72BDB500B792AF /* Vector3.cpp */; };
+		61A8DCB21C72BDE500B792AF /* Bolt.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC891C72BDBD00B792AF /* Bolt.mtl */; };
+		61A8DCB31C72BDE500B792AF /* Bolt.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC8A1C72BDBD00B792AF /* Bolt.obj */; };
+		61A8DCB41C72BDE500B792AF /* Grapple-Red.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC8B1C72BDBD00B792AF /* Grapple-Red.bmp */; };
+		61A8DCB51C72BDE500B792AF /* Grapple.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC8C1C72BDBD00B792AF /* Grapple.mtl */; };
+		61A8DCB61C72BDE500B792AF /* Grapple.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC8D1C72BDBD00B792AF /* Grapple.obj */; };
+		61A8DCB71C72BDE500B792AF /* Missile-Red.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC8E1C72BDBD00B792AF /* Missile-Red.bmp */; };
+		61A8DCB81C72BDE500B792AF /* Missile.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC8F1C72BDBD00B792AF /* Missile.mtl */; };
+		61A8DCB91C72BDE500B792AF /* Missile.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC901C72BDBD00B792AF /* Missile.obj */; };
+		61A8DCBA1C72BDE500B792AF /* MoonA.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC911C72BDBD00B792AF /* MoonA.bmp */; };
+		61A8DCBB1C72BDE500B792AF /* MoonA.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC921C72BDBD00B792AF /* MoonA.obj */; };
+		61A8DCBC1C72BDE500B792AF /* MoonB.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC931C72BDBD00B792AF /* MoonB.bmp */; };
+		61A8DCBD1C72BDE500B792AF /* MoonB.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC941C72BDBD00B792AF /* MoonB.obj */; };
+		61A8DCBE1C72BDE500B792AF /* MoonC.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC951C72BDBD00B792AF /* MoonC.bmp */; };
+		61A8DCBF1C72BDE500B792AF /* MoonC.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC961C72BDBD00B792AF /* MoonC.obj */; };
+		61A8DCC01C72BDE500B792AF /* MoonD.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC971C72BDBD00B792AF /* MoonD.bmp */; };
+		61A8DCC11C72BDE500B792AF /* MoonD.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC981C72BDBD00B792AF /* MoonD.obj */; };
+		61A8DCC21C72BDE500B792AF /* MoonE.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC991C72BDBD00B792AF /* MoonE.bmp */; };
+		61A8DCC31C72BDE500B792AF /* MoonE.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC9A1C72BDBD00B792AF /* MoonE.obj */; };
+		61A8DCC41C72BDE500B792AF /* MoonF.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC9B1C72BDBD00B792AF /* MoonF.bmp */; };
+		61A8DCC51C72BDE500B792AF /* MoonF.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC9C1C72BDBD00B792AF /* MoonF.obj */; };
+		61A8DCC61C72BDE500B792AF /* MoonG.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC9D1C72BDBD00B792AF /* MoonG.bmp */; };
+		61A8DCC71C72BDE500B792AF /* MoonG.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC9E1C72BDBD00B792AF /* MoonG.obj */; };
+		61A8DCC81C72BDE500B792AF /* MoonH.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DC9F1C72BDBD00B792AF /* MoonH.bmp */; };
+		61A8DCC91C72BDE500B792AF /* MoonH.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA01C72BDBD00B792AF /* MoonH.obj */; };
+		61A8DCCA1C72BDE500B792AF /* MoonI.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA11C72BDBD00B792AF /* MoonI.bmp */; };
+		61A8DCCB1C72BDE500B792AF /* MoonI.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA21C72BDBD00B792AF /* MoonI.obj */; };
+		61A8DCCC1C72BDE500B792AF /* MoonJ.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA31C72BDBD00B792AF /* MoonJ.bmp */; };
+		61A8DCCD1C72BDE500B792AF /* MoonJ.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA41C72BDBD00B792AF /* MoonJ.obj */; };
+		61A8DCCE1C72BDE500B792AF /* Moons.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA51C72BDBD00B792AF /* Moons.mtl */; };
+		61A8DCCF1C72BDE500B792AF /* ring.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA61C72BDBD00B792AF /* ring.bmp */; };
+		61A8DCD01C72BDE500B792AF /* Ring.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA71C72BDBD00B792AF /* Ring.obj */; };
+		61A8DCD11C72BDE500B792AF /* ring_particleA.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA81C72BDBD00B792AF /* ring_particleA.bmp */; };
+		61A8DCD21C72BDE500B792AF /* RingParticleA0.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCA91C72BDBD00B792AF /* RingParticleA0.obj */; };
+		61A8DCD31C72BDE500B792AF /* RingParticles.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCAA1C72BDBD00B792AF /* RingParticles.mtl */; };
+		61A8DCD41C72BDE500B792AF /* saturn.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCAB1C72BDBD00B792AF /* saturn.bmp */; };
+		61A8DCD51C72BDE500B792AF /* Saturn.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCAC1C72BDBD00B792AF /* Saturn.mtl */; };
+		61A8DCD61C72BDE500B792AF /* Saturn.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCAD1C72BDBD00B792AF /* Saturn.obj */; };
+		61A8DCD71C72BDE500B792AF /* Skybox.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCAE1C72BDBD00B792AF /* Skybox.mtl */; };
+		61A8DCD81C72BDE500B792AF /* Skybox.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCAF1C72BDBD00B792AF /* Skybox.obj */; };
+		61A8DCD91C72BDE500B792AF /* skybox1.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61A8DCB01C72BDBD00B792AF /* skybox1.bmp */; };
+		61A8DCDC1C72BE1A00B792AF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8DCDA1C72BE1A00B792AF /* GLUT.framework */; };
+		61A8DCDD1C72BE1A00B792AF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8DCDB1C72BE1A00B792AF /* OpenGL.framework */; };
+		61A8DCEA1C72BF0C00B792AF /* ExplosionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCDE1C72BF0C00B792AF /* ExplosionManager.cpp */; };
+		61A8DCEC1C72BF0C00B792AF /* TimeSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */; };
+		61A8DCED1C72BF0C00B792AF /* WorldExplosions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCE71C72BF0C00B792AF /* WorldExplosions.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		61A8DC441C72BD6800B792AF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = Models;
+			dstSubfolderSpec = 16;
+			files = (
+				61A8DCB21C72BDE500B792AF /* Bolt.mtl in CopyFiles */,
+				61A8DCB31C72BDE500B792AF /* Bolt.obj in CopyFiles */,
+				61A8DCB41C72BDE500B792AF /* Grapple-Red.bmp in CopyFiles */,
+				61A8DCB51C72BDE500B792AF /* Grapple.mtl in CopyFiles */,
+				61A8DCB61C72BDE500B792AF /* Grapple.obj in CopyFiles */,
+				61A8DCB71C72BDE500B792AF /* Missile-Red.bmp in CopyFiles */,
+				61A8DCB81C72BDE500B792AF /* Missile.mtl in CopyFiles */,
+				61A8DCB91C72BDE500B792AF /* Missile.obj in CopyFiles */,
+				61A8DCBA1C72BDE500B792AF /* MoonA.bmp in CopyFiles */,
+				61A8DCBB1C72BDE500B792AF /* MoonA.obj in CopyFiles */,
+				61A8DCBC1C72BDE500B792AF /* MoonB.bmp in CopyFiles */,
+				61A8DCBD1C72BDE500B792AF /* MoonB.obj in CopyFiles */,
+				61A8DCBE1C72BDE500B792AF /* MoonC.bmp in CopyFiles */,
+				61A8DCBF1C72BDE500B792AF /* MoonC.obj in CopyFiles */,
+				61A8DCC01C72BDE500B792AF /* MoonD.bmp in CopyFiles */,
+				61A8DCC11C72BDE500B792AF /* MoonD.obj in CopyFiles */,
+				61A8DCC21C72BDE500B792AF /* MoonE.bmp in CopyFiles */,
+				61A8DCC31C72BDE500B792AF /* MoonE.obj in CopyFiles */,
+				61A8DCC41C72BDE500B792AF /* MoonF.bmp in CopyFiles */,
+				61A8DCC51C72BDE500B792AF /* MoonF.obj in CopyFiles */,
+				61A8DCC61C72BDE500B792AF /* MoonG.bmp in CopyFiles */,
+				61A8DCC71C72BDE500B792AF /* MoonG.obj in CopyFiles */,
+				61A8DCC81C72BDE500B792AF /* MoonH.bmp in CopyFiles */,
+				61A8DCC91C72BDE500B792AF /* MoonH.obj in CopyFiles */,
+				61A8DCCA1C72BDE500B792AF /* MoonI.bmp in CopyFiles */,
+				61A8DCCB1C72BDE500B792AF /* MoonI.obj in CopyFiles */,
+				61A8DCCC1C72BDE500B792AF /* MoonJ.bmp in CopyFiles */,
+				61A8DCCD1C72BDE500B792AF /* MoonJ.obj in CopyFiles */,
+				61A8DCCE1C72BDE500B792AF /* Moons.mtl in CopyFiles */,
+				61A8DCCF1C72BDE500B792AF /* ring.bmp in CopyFiles */,
+				61A8DCD01C72BDE500B792AF /* Ring.obj in CopyFiles */,
+				61A8DCD11C72BDE500B792AF /* ring_particleA.bmp in CopyFiles */,
+				61A8DCD21C72BDE500B792AF /* RingParticleA0.obj in CopyFiles */,
+				61A8DCD31C72BDE500B792AF /* RingParticles.mtl in CopyFiles */,
+				61A8DCD41C72BDE500B792AF /* saturn.bmp in CopyFiles */,
+				61A8DCD51C72BDE500B792AF /* Saturn.mtl in CopyFiles */,
+				61A8DCD61C72BDE500B792AF /* Saturn.obj in CopyFiles */,
+				61A8DCD71C72BDE500B792AF /* Skybox.mtl in CopyFiles */,
+				61A8DCD81C72BDE500B792AF /* Skybox.obj in CopyFiles */,
+				61A8DCD91C72BDE500B792AF /* skybox1.bmp in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		61A8DC461C72BD6900B792AF /* cs409a3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cs409a3; sourceTree = BUILT_PRODUCTS_DIR; };
+		61A8DC501C72BDA700B792AF /* CoordinateSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoordinateSystem.cpp; sourceTree = "<group>"; };
+		61A8DC511C72BDA700B792AF /* CoordinateSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateSystem.h; sourceTree = "<group>"; };
+		61A8DC521C72BDA700B792AF /* GetGlut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetGlut.h; sourceTree = "<group>"; };
+		61A8DC531C72BDA700B792AF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		61A8DC541C72BDA700B792AF /* Sector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sector.cpp; sourceTree = "<group>"; };
+		61A8DC551C72BDA700B792AF /* Sector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sector.h; sourceTree = "<group>"; };
+		61A8DC561C72BDA700B792AF /* Sleep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sleep.cpp; sourceTree = "<group>"; };
+		61A8DC571C72BDA700B792AF /* Sleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sleep.h; sourceTree = "<group>"; };
+		61A8DC581C72BDA700B792AF /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		61A8DC591C72BDA700B792AF /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		61A8DC601C72BDB500B792AF /* DisplayList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayList.cpp; sourceTree = "<group>"; };
+		61A8DC611C72BDB500B792AF /* DisplayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayList.h; sourceTree = "<group>"; };
+		61A8DC621C72BDB500B792AF /* GetGlut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetGlut.h; sourceTree = "<group>"; };
+		61A8DC631C72BDB500B792AF /* GLUT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUT.h; sourceTree = "<group>"; };
+		61A8DC641C72BDB500B792AF /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
+		61A8DC651C72BDB500B792AF /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
+		61A8DC661C72BDB500B792AF /* MtlLibrary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MtlLibrary.cpp; sourceTree = "<group>"; };
+		61A8DC671C72BDB500B792AF /* MtlLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MtlLibrary.h; sourceTree = "<group>"; };
+		61A8DC681C72BDB500B792AF /* MtlLibraryManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MtlLibraryManager.cpp; sourceTree = "<group>"; };
+		61A8DC691C72BDB500B792AF /* MtlLibraryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MtlLibraryManager.h; sourceTree = "<group>"; };
+		61A8DC6A1C72BDB500B792AF /* ObjLibrary-development-log.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ObjLibrary-development-log.txt"; sourceTree = "<group>"; };
+		61A8DC6B1C72BDB500B792AF /* ObjModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjModel.cpp; sourceTree = "<group>"; };
+		61A8DC6C1C72BDB500B792AF /* ObjModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjModel.h; sourceTree = "<group>"; };
+		61A8DC6D1C72BDB500B792AF /* ObjSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjSettings.h; sourceTree = "<group>"; };
+		61A8DC6E1C72BDB500B792AF /* ObjStringParsing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjStringParsing.cpp; sourceTree = "<group>"; };
+		61A8DC6F1C72BDB500B792AF /* ObjStringParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjStringParsing.h; sourceTree = "<group>"; };
+		61A8DC701C72BDB500B792AF /* SpriteFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteFont.cpp; sourceTree = "<group>"; };
+		61A8DC711C72BDB500B792AF /* SpriteFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteFont.h; sourceTree = "<group>"; };
+		61A8DC721C72BDB500B792AF /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		61A8DC731C72BDB500B792AF /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		61A8DC741C72BDB500B792AF /* TextureBmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureBmp.cpp; sourceTree = "<group>"; };
+		61A8DC751C72BDB500B792AF /* TextureBmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBmp.h; sourceTree = "<group>"; };
+		61A8DC761C72BDB500B792AF /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
+		61A8DC771C72BDB500B792AF /* TextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureManager.h; sourceTree = "<group>"; };
+		61A8DC781C72BDB500B792AF /* Vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2.cpp; sourceTree = "<group>"; };
+		61A8DC791C72BDB500B792AF /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
+		61A8DC7A1C72BDB500B792AF /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
+		61A8DC7B1C72BDB500B792AF /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
+		61A8DC891C72BDBD00B792AF /* Bolt.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bolt.mtl; sourceTree = "<group>"; };
+		61A8DC8A1C72BDBD00B792AF /* Bolt.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bolt.obj; sourceTree = "<group>"; };
+		61A8DC8B1C72BDBD00B792AF /* Grapple-Red.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "Grapple-Red.bmp"; sourceTree = "<group>"; };
+		61A8DC8C1C72BDBD00B792AF /* Grapple.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Grapple.mtl; sourceTree = "<group>"; };
+		61A8DC8D1C72BDBD00B792AF /* Grapple.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Grapple.obj; sourceTree = "<group>"; };
+		61A8DC8E1C72BDBD00B792AF /* Missile-Red.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "Missile-Red.bmp"; sourceTree = "<group>"; };
+		61A8DC8F1C72BDBD00B792AF /* Missile.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Missile.mtl; sourceTree = "<group>"; };
+		61A8DC901C72BDBD00B792AF /* Missile.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Missile.obj; sourceTree = "<group>"; };
+		61A8DC911C72BDBD00B792AF /* MoonA.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonA.bmp; sourceTree = "<group>"; };
+		61A8DC921C72BDBD00B792AF /* MoonA.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonA.obj; sourceTree = "<group>"; };
+		61A8DC931C72BDBD00B792AF /* MoonB.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonB.bmp; sourceTree = "<group>"; };
+		61A8DC941C72BDBD00B792AF /* MoonB.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonB.obj; sourceTree = "<group>"; };
+		61A8DC951C72BDBD00B792AF /* MoonC.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonC.bmp; sourceTree = "<group>"; };
+		61A8DC961C72BDBD00B792AF /* MoonC.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonC.obj; sourceTree = "<group>"; };
+		61A8DC971C72BDBD00B792AF /* MoonD.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonD.bmp; sourceTree = "<group>"; };
+		61A8DC981C72BDBD00B792AF /* MoonD.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonD.obj; sourceTree = "<group>"; };
+		61A8DC991C72BDBD00B792AF /* MoonE.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonE.bmp; sourceTree = "<group>"; };
+		61A8DC9A1C72BDBD00B792AF /* MoonE.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonE.obj; sourceTree = "<group>"; };
+		61A8DC9B1C72BDBD00B792AF /* MoonF.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonF.bmp; sourceTree = "<group>"; };
+		61A8DC9C1C72BDBD00B792AF /* MoonF.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonF.obj; sourceTree = "<group>"; };
+		61A8DC9D1C72BDBD00B792AF /* MoonG.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonG.bmp; sourceTree = "<group>"; };
+		61A8DC9E1C72BDBD00B792AF /* MoonG.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonG.obj; sourceTree = "<group>"; };
+		61A8DC9F1C72BDBD00B792AF /* MoonH.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonH.bmp; sourceTree = "<group>"; };
+		61A8DCA01C72BDBD00B792AF /* MoonH.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonH.obj; sourceTree = "<group>"; };
+		61A8DCA11C72BDBD00B792AF /* MoonI.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonI.bmp; sourceTree = "<group>"; };
+		61A8DCA21C72BDBD00B792AF /* MoonI.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonI.obj; sourceTree = "<group>"; };
+		61A8DCA31C72BDBD00B792AF /* MoonJ.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MoonJ.bmp; sourceTree = "<group>"; };
+		61A8DCA41C72BDBD00B792AF /* MoonJ.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoonJ.obj; sourceTree = "<group>"; };
+		61A8DCA51C72BDBD00B792AF /* Moons.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Moons.mtl; sourceTree = "<group>"; };
+		61A8DCA61C72BDBD00B792AF /* ring.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = ring.bmp; sourceTree = "<group>"; };
+		61A8DCA71C72BDBD00B792AF /* Ring.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ring.obj; sourceTree = "<group>"; };
+		61A8DCA81C72BDBD00B792AF /* ring_particleA.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = ring_particleA.bmp; sourceTree = "<group>"; };
+		61A8DCA91C72BDBD00B792AF /* RingParticleA0.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RingParticleA0.obj; sourceTree = "<group>"; };
+		61A8DCAA1C72BDBD00B792AF /* RingParticles.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RingParticles.mtl; sourceTree = "<group>"; };
+		61A8DCAB1C72BDBD00B792AF /* saturn.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = saturn.bmp; sourceTree = "<group>"; };
+		61A8DCAC1C72BDBD00B792AF /* Saturn.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Saturn.mtl; sourceTree = "<group>"; };
+		61A8DCAD1C72BDBD00B792AF /* Saturn.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Saturn.obj; sourceTree = "<group>"; };
+		61A8DCAE1C72BDBD00B792AF /* Skybox.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Skybox.mtl; sourceTree = "<group>"; };
+		61A8DCAF1C72BDBD00B792AF /* Skybox.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Skybox.obj; sourceTree = "<group>"; };
+		61A8DCB01C72BDBD00B792AF /* skybox1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = skybox1.bmp; sourceTree = "<group>"; };
+		61A8DCB11C72BDBD00B792AF /* Sources.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sources.txt; sourceTree = "<group>"; };
+		61A8DCDA1C72BE1A00B792AF /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		61A8DCDB1C72BE1A00B792AF /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		61A8DCDE1C72BF0C00B792AF /* ExplosionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExplosionManager.cpp; sourceTree = "<group>"; };
+		61A8DCDF1C72BF0C00B792AF /* ExplosionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplosionManager.h; sourceTree = "<group>"; };
+		61A8DCE01C72BF0C00B792AF /* ExplosionManagerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplosionManagerInterface.h; sourceTree = "<group>"; };
+		61A8DCE21C72BF0C00B792AF /* PhysicsObjectId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsObjectId.h; sourceTree = "<group>"; };
+		61A8DCE41C72BF0C00B792AF /* Planetoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planetoid.h; sourceTree = "<group>"; };
+		61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeSystem.cpp; sourceTree = "<group>"; };
+		61A8DCE61C72BF0C00B792AF /* TimeSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSystem.h; sourceTree = "<group>"; };
+		61A8DCE71C72BF0C00B792AF /* WorldExplosions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldExplosions.cpp; sourceTree = "<group>"; };
+		61A8DCE81C72BF0C00B792AF /* WorldExplosions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldExplosions.h; sourceTree = "<group>"; };
+		61A8DCE91C72BF0C00B792AF /* WorldInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldInterface.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61A8DC431C72BD6800B792AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61A8DCDC1C72BE1A00B792AF /* GLUT.framework in Frameworks */,
+				61A8DCDD1C72BE1A00B792AF /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61A8DC3D1C72BD6800B792AF = {
+			isa = PBXGroup;
+			children = (
+				61A8DCDA1C72BE1A00B792AF /* GLUT.framework */,
+				61A8DCDB1C72BE1A00B792AF /* OpenGL.framework */,
+				61A8DC5F1C72BDB500B792AF /* ObjLibrary */,
+				61A8DC481C72BD6900B792AF /* cs409a3 */,
+				61A8DC881C72BDBD00B792AF /* Models */,
+				61A8DC471C72BD6900B792AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61A8DC471C72BD6900B792AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61A8DC461C72BD6900B792AF /* cs409a3 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61A8DC481C72BD6900B792AF /* cs409a3 */ = {
+			isa = PBXGroup;
+			children = (
+				61A8DCDE1C72BF0C00B792AF /* ExplosionManager.cpp */,
+				61A8DCDF1C72BF0C00B792AF /* ExplosionManager.h */,
+				61A8DCE01C72BF0C00B792AF /* ExplosionManagerInterface.h */,
+				61A8DCE21C72BF0C00B792AF /* PhysicsObjectId.h */,
+				61A8DCE41C72BF0C00B792AF /* Planetoid.h */,
+				61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */,
+				61A8DCE61C72BF0C00B792AF /* TimeSystem.h */,
+				61A8DCE71C72BF0C00B792AF /* WorldExplosions.cpp */,
+				61A8DCE81C72BF0C00B792AF /* WorldExplosions.h */,
+				61A8DCE91C72BF0C00B792AF /* WorldInterface.h */,
+				61A8DC501C72BDA700B792AF /* CoordinateSystem.cpp */,
+				61A8DC511C72BDA700B792AF /* CoordinateSystem.h */,
+				61A8DC521C72BDA700B792AF /* GetGlut.h */,
+				61A8DC531C72BDA700B792AF /* main.cpp */,
+				61A8DC541C72BDA700B792AF /* Sector.cpp */,
+				61A8DC551C72BDA700B792AF /* Sector.h */,
+				61A8DC561C72BDA700B792AF /* Sleep.cpp */,
+				61A8DC571C72BDA700B792AF /* Sleep.h */,
+				61A8DC581C72BDA700B792AF /* World.cpp */,
+				61A8DC591C72BDA700B792AF /* World.h */,
+			);
+			path = cs409a3;
+			sourceTree = "<group>";
+		};
+		61A8DC5F1C72BDB500B792AF /* ObjLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				61A8DC601C72BDB500B792AF /* DisplayList.cpp */,
+				61A8DC611C72BDB500B792AF /* DisplayList.h */,
+				61A8DC621C72BDB500B792AF /* GetGlut.h */,
+				61A8DC631C72BDB500B792AF /* GLUT.h */,
+				61A8DC641C72BDB500B792AF /* Material.cpp */,
+				61A8DC651C72BDB500B792AF /* Material.h */,
+				61A8DC661C72BDB500B792AF /* MtlLibrary.cpp */,
+				61A8DC671C72BDB500B792AF /* MtlLibrary.h */,
+				61A8DC681C72BDB500B792AF /* MtlLibraryManager.cpp */,
+				61A8DC691C72BDB500B792AF /* MtlLibraryManager.h */,
+				61A8DC6A1C72BDB500B792AF /* ObjLibrary-development-log.txt */,
+				61A8DC6B1C72BDB500B792AF /* ObjModel.cpp */,
+				61A8DC6C1C72BDB500B792AF /* ObjModel.h */,
+				61A8DC6D1C72BDB500B792AF /* ObjSettings.h */,
+				61A8DC6E1C72BDB500B792AF /* ObjStringParsing.cpp */,
+				61A8DC6F1C72BDB500B792AF /* ObjStringParsing.h */,
+				61A8DC701C72BDB500B792AF /* SpriteFont.cpp */,
+				61A8DC711C72BDB500B792AF /* SpriteFont.h */,
+				61A8DC721C72BDB500B792AF /* Texture.cpp */,
+				61A8DC731C72BDB500B792AF /* Texture.h */,
+				61A8DC741C72BDB500B792AF /* TextureBmp.cpp */,
+				61A8DC751C72BDB500B792AF /* TextureBmp.h */,
+				61A8DC761C72BDB500B792AF /* TextureManager.cpp */,
+				61A8DC771C72BDB500B792AF /* TextureManager.h */,
+				61A8DC781C72BDB500B792AF /* Vector2.cpp */,
+				61A8DC791C72BDB500B792AF /* Vector2.h */,
+				61A8DC7A1C72BDB500B792AF /* Vector3.cpp */,
+				61A8DC7B1C72BDB500B792AF /* Vector3.h */,
+			);
+			name = ObjLibrary;
+			path = ../ObjLibrary;
+			sourceTree = "<group>";
+		};
+		61A8DC881C72BDBD00B792AF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61A8DC891C72BDBD00B792AF /* Bolt.mtl */,
+				61A8DC8A1C72BDBD00B792AF /* Bolt.obj */,
+				61A8DC8B1C72BDBD00B792AF /* Grapple-Red.bmp */,
+				61A8DC8C1C72BDBD00B792AF /* Grapple.mtl */,
+				61A8DC8D1C72BDBD00B792AF /* Grapple.obj */,
+				61A8DC8E1C72BDBD00B792AF /* Missile-Red.bmp */,
+				61A8DC8F1C72BDBD00B792AF /* Missile.mtl */,
+				61A8DC901C72BDBD00B792AF /* Missile.obj */,
+				61A8DC911C72BDBD00B792AF /* MoonA.bmp */,
+				61A8DC921C72BDBD00B792AF /* MoonA.obj */,
+				61A8DC931C72BDBD00B792AF /* MoonB.bmp */,
+				61A8DC941C72BDBD00B792AF /* MoonB.obj */,
+				61A8DC951C72BDBD00B792AF /* MoonC.bmp */,
+				61A8DC961C72BDBD00B792AF /* MoonC.obj */,
+				61A8DC971C72BDBD00B792AF /* MoonD.bmp */,
+				61A8DC981C72BDBD00B792AF /* MoonD.obj */,
+				61A8DC991C72BDBD00B792AF /* MoonE.bmp */,
+				61A8DC9A1C72BDBD00B792AF /* MoonE.obj */,
+				61A8DC9B1C72BDBD00B792AF /* MoonF.bmp */,
+				61A8DC9C1C72BDBD00B792AF /* MoonF.obj */,
+				61A8DC9D1C72BDBD00B792AF /* MoonG.bmp */,
+				61A8DC9E1C72BDBD00B792AF /* MoonG.obj */,
+				61A8DC9F1C72BDBD00B792AF /* MoonH.bmp */,
+				61A8DCA01C72BDBD00B792AF /* MoonH.obj */,
+				61A8DCA11C72BDBD00B792AF /* MoonI.bmp */,
+				61A8DCA21C72BDBD00B792AF /* MoonI.obj */,
+				61A8DCA31C72BDBD00B792AF /* MoonJ.bmp */,
+				61A8DCA41C72BDBD00B792AF /* MoonJ.obj */,
+				61A8DCA51C72BDBD00B792AF /* Moons.mtl */,
+				61A8DCA61C72BDBD00B792AF /* ring.bmp */,
+				61A8DCA71C72BDBD00B792AF /* Ring.obj */,
+				61A8DCA81C72BDBD00B792AF /* ring_particleA.bmp */,
+				61A8DCA91C72BDBD00B792AF /* RingParticleA0.obj */,
+				61A8DCAA1C72BDBD00B792AF /* RingParticles.mtl */,
+				61A8DCAB1C72BDBD00B792AF /* saturn.bmp */,
+				61A8DCAC1C72BDBD00B792AF /* Saturn.mtl */,
+				61A8DCAD1C72BDBD00B792AF /* Saturn.obj */,
+				61A8DCAE1C72BDBD00B792AF /* Skybox.mtl */,
+				61A8DCAF1C72BDBD00B792AF /* Skybox.obj */,
+				61A8DCB01C72BDBD00B792AF /* skybox1.bmp */,
+				61A8DCB11C72BDBD00B792AF /* Sources.txt */,
+			);
+			name = Models;
+			path = cs409a3/Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61A8DC451C72BD6800B792AF /* cs409a3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61A8DC4D1C72BD6900B792AF /* Build configuration list for PBXNativeTarget "cs409a3" */;
+			buildPhases = (
+				61A8DC421C72BD6800B792AF /* Sources */,
+				61A8DC431C72BD6800B792AF /* Frameworks */,
+				61A8DC441C72BD6800B792AF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cs409a3;
+			productName = cs409a3;
+			productReference = 61A8DC461C72BD6900B792AF /* cs409a3 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61A8DC3E1C72BD6800B792AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Brayden Streibel";
+				TargetAttributes = {
+					61A8DC451C72BD6800B792AF = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 61A8DC411C72BD6800B792AF /* Build configuration list for PBXProject "cs409a3" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 61A8DC3D1C72BD6800B792AF;
+			productRefGroup = 61A8DC471C72BD6900B792AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61A8DC451C72BD6800B792AF /* cs409a3 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61A8DC421C72BD6800B792AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61A8DC7F1C72BDB500B792AF /* MtlLibraryManager.cpp in Sources */,
+				61A8DC861C72BDB500B792AF /* Vector2.cpp in Sources */,
+				61A8DC821C72BDB500B792AF /* SpriteFont.cpp in Sources */,
+				61A8DC7C1C72BDB500B792AF /* DisplayList.cpp in Sources */,
+				61A8DC811C72BDB500B792AF /* ObjStringParsing.cpp in Sources */,
+				61A8DC7E1C72BDB500B792AF /* MtlLibrary.cpp in Sources */,
+				61A8DC871C72BDB500B792AF /* Vector3.cpp in Sources */,
+				61A8DC831C72BDB500B792AF /* Texture.cpp in Sources */,
+				61A8DC801C72BDB500B792AF /* ObjModel.cpp in Sources */,
+				61A8DC7D1C72BDB500B792AF /* Material.cpp in Sources */,
+				61A8DC5C1C72BDA700B792AF /* Sector.cpp in Sources */,
+				61A8DCEC1C72BF0C00B792AF /* TimeSystem.cpp in Sources */,
+				61A8DCED1C72BF0C00B792AF /* WorldExplosions.cpp in Sources */,
+				61A8DC5E1C72BDA700B792AF /* World.cpp in Sources */,
+				61A8DC5B1C72BDA700B792AF /* main.cpp in Sources */,
+				61A8DCEA1C72BF0C00B792AF /* ExplosionManager.cpp in Sources */,
+				61A8DC841C72BDB500B792AF /* TextureBmp.cpp in Sources */,
+				61A8DC5A1C72BDA700B792AF /* CoordinateSystem.cpp in Sources */,
+				61A8DC5D1C72BDA700B792AF /* Sleep.cpp in Sources */,
+				61A8DC851C72BDB500B792AF /* TextureManager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		61A8DC4B1C72BD6900B792AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		61A8DC4C1C72BD6900B792AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		61A8DC4E1C72BD6900B792AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61A8DC4F1C72BD6900B792AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61A8DC411C72BD6800B792AF /* Build configuration list for PBXProject "cs409a3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61A8DC4B1C72BD6900B792AF /* Debug */,
+				61A8DC4C1C72BD6900B792AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61A8DC4D1C72BD6900B792AF /* Build configuration list for PBXNativeTarget "cs409a3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61A8DC4E1C72BD6900B792AF /* Debug */,
+				61A8DC4F1C72BD6900B792AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61A8DC3E1C72BD6800B792AF /* Project object */;
+}

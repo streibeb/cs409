@@ -2,8 +2,6 @@
 //  Main6.cpp
 //
 
-//#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-
 #include <stdlib.h>
 #include "GetGlut.h"
 #include "Sleep.h"
