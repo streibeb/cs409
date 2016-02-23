@@ -10,6 +10,7 @@
 #define CoordinateSystem_hpp
 
 #include <stdlib.h>
+#include <cmath>
 #include "GetGlut.h"
 #include "../../ObjLibrary/Vector3.h"
 
@@ -22,50 +23,46 @@ private:
     
 public:
     CoordinateSystem();
+    CoordinateSystem(const Vector3& pos, const Vector3& fwd);
+    CoordinateSystem(const Vector3& pos, const Vector3& fwd, const Vector3& up);
+    CoordinateSystem(const CoordinateSystem& c);
     ~CoordinateSystem();
     
-    // Rotation around Z axis
-    void setRoll(double theta);
+    CoordinateSystem& operator=(const CoordinateSystem& c);
     
-    // Rotation around Y axis
-    void setYaw(double theta);
+    void init(const Vector3& pos, const Vector3& fwd, const Vector3& up);
     
-    // Rotation around X axis
-    void setPitch(double theta);
-    
-    // Rotate camera to point in the direction of a given vector
-    void rotateToVector(const Vector3& target_facing, double max_radians);
-    
-    // Set position in (x,y,z)
+    const Vector3& getForward() const;
+    const Vector3& getUp() const;
+    const Vector3& getPosition() const;
+    Vector3 getRight() const;
+
     void setPosition(const Vector3& pos);
+    void setOrientation(const Vector3& fwd, const Vector3& up);
+    void setOrientation(const Vector3& fwd);
     
-    // Move distance along forward vector
+    void randomizeUpVector();
+    void randomizeOrientation();
+    
+    void rotateAroundForward(double theta);
+    void rotateAroundUp(double theta);
+    void rotateAroundRight(double theta);
+    void rotateToVector(const Vector3& target_facing, double max_radians);
+    void rotateUpright(double max_radians);
+    
     void moveForward(double distance);
-    
-    // Move distance along negative forward vector
-    void moveBackward(double distance);
-    
-    // Move distance along up vector
     void moveUp(double distance);
-    
-    // Move distance along negative up vector
-    void moveDown(double distance);
-    
-    // Move distance along negative right vector
-    void moveLeft(double distance);
-    
-    // Move distance along right vector
     void moveRight(double distance);
     
-    Vector3 getForward();
-    Vector3 getUp();
-    Vector3 getPosition();
+    void applyTransformation() const;
     
-    // Resets camera's orientation and position back to default
     void reset();
-    
-    // Sets camera perspective
     void setCamera();
+    
+    Vector3 calculateUpVector(const Vector3& fwd) const;
+    
+private:
+    void copy(const CoordinateSystem& c);
 };
 
 #endif /* CoordinateSystem_hpp */

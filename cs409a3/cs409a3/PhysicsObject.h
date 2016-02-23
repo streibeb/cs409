@@ -9,8 +9,9 @@
 #define PHYSICS_OBJECT_H
 
 #include "../../ObjLibrary/Vector3.h"
-
+#include "../../ObjLibrary/DisplayList.h"
 #include "PhysicsObjectId.h"
+#include "CoordinateSystem.h"
 
 class DisplayList;
 class WorldInterface;
@@ -68,6 +69,19 @@ class WorldInterface;
 
 class PhysicsObject
 {
+private:
+    PhysicsObjectId id;
+    //CoordinateSystem coordinateSystem;
+    Vector3 velocity;
+    Vector3 previousPosition;
+    double radius;
+    bool displayListSet;
+    DisplayList displayList;
+    double scale;
+    
+protected:
+    CoordinateSystem coordinateSystem;
+    
 public:
 //
 //  Default Constructor
@@ -177,7 +191,7 @@ public:
 //               with this PhysicsObject is freed.
 //
 
-	virtual ~PhysicsObject ();
+    virtual ~PhysicsObject () = 0;
 
 //
 //  Assignment Operator
@@ -903,6 +917,9 @@ protected:
 //
 
 	void updateBasic ();
+    
+private:
+    void copy(const PhysicsObject& p);
 
 };
 

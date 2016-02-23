@@ -52,3 +52,5 @@ xcuserdata
 *.app
 
 *.xcuserstate
+
+*.pbxproj

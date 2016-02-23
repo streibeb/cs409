@@ -18,19 +18,58 @@ CoordinateSystem::~CoordinateSystem()
 
 }
 
-void CoordinateSystem::setRoll(double theta)
+CoordinateSystem::CoordinateSystem(const Vector3& pos, const Vector3& fwd)
+{
+    this->position = pos;
+    this->forward = fwd;
+    this->up = calculateUpVector(fwd);
+}
+
+CoordinateSystem::CoordinateSystem(const Vector3& pos, const Vector3& fwd, const Vector3& up)
+{
+    this->position = pos;
+    this->forward = fwd;
+    this->up = up;
+}
+
+CoordinateSystem::CoordinateSystem(const CoordinateSystem& c)
+{
+    copy(c);
+}
+
+CoordinateSystem& CoordinateSystem::operator=(const CoordinateSystem& c)
+{
+    copy(c);
+    return *this;
+}
+
+void CoordinateSystem::init(const Vector3& pos, const Vector3& fwd, const Vector3& up)
+{
+    this->position = pos;
+    this->forward = fwd;
+    this->up = up;
+}
+
+void CoordinateSystem::copy(const CoordinateSystem& c)
+{
+    this->position = c.position;
+    this->forward = c.forward;
+    this->up = c.up;
+}
+
+void CoordinateSystem::rotateAroundForward(double theta)
 {
     up.rotateArbitrary(forward, theta);
 }
 
-void CoordinateSystem::setYaw(double theta)
+void CoordinateSystem::rotateAroundUp(double theta)
 {
     forward.rotateArbitrary(up, theta);
 }
 
-void CoordinateSystem::setPitch(double theta)
+void CoordinateSystem::rotateAroundRight(double theta)
 {
-    Vector3 right = forward.crossProduct(up);
+    Vector3 right = getRight();
     forward.rotateArbitrary(right, theta);
     up.rotateArbitrary(right, theta);
 }
@@ -51,9 +90,15 @@ void CoordinateSystem::rotateToVector(const Vector3& target_facing, double max_r
     up     .rotateArbitrary(axis, radians);
 }
 
-void CoordinateSystem::setPosition(const Vector3& pos)
+void CoordinateSystem::rotateUpright(double max_radians)
 {
-    position = pos;
+    Vector3 desired_up = calculateUpVector(forward);
+    Vector3 axis = up.crossProduct(desired_up);
+    if (axis.isZero()) axis = forward;
+    else axis.normalize();
+    double radians = up.getAngleSafe(desired_up);
+    if (radians > max_radians) radians = max_radians;
+    up.rotateArbitrary(axis, radians);
 }
 
 void CoordinateSystem::moveForward(double distance)
@@ -61,51 +106,85 @@ void CoordinateSystem::moveForward(double distance)
     position += forward * distance;
 }
 
-void CoordinateSystem::moveBackward(double distance)
-{
-    position -= forward * distance;
-}
-
 void CoordinateSystem::moveUp(double distance)
 {
     position += up * distance;
 }
 
-void CoordinateSystem::moveDown(double distance)
-{
-    position -= up * distance;
-}
-
 void CoordinateSystem::moveRight(double distance)
 {
-    position += forward.crossProduct(up) * distance;
+    position += getRight() * distance;
 }
 
-void CoordinateSystem::moveLeft(double distance)
+Vector3 CoordinateSystem::getRight() const
 {
-    position -= forward.crossProduct(up) * distance;
+    return forward.crossProduct(up);
 }
 
-Vector3 CoordinateSystem::getForward()
+const Vector3& CoordinateSystem::getForward() const
 {
     return forward;
 }
 
-Vector3 CoordinateSystem::getUp()
+const Vector3& CoordinateSystem::getUp() const
 {
     return up;
 }
 
-Vector3 CoordinateSystem::getPosition()
+const Vector3& CoordinateSystem::getPosition() const
 {
     return position;
 }
 
+void CoordinateSystem::setPosition(const Vector3& pos)
+{
+    this->position = pos;
+}
+
+void CoordinateSystem::setOrientation(const Vector3& fwd, const Vector3& up)
+{
+    this->forward = fwd;
+    this->up = up;
+}
+
+void CoordinateSystem::setOrientation(const Vector3& fwd)
+{
+    this->forward = fwd;
+    this->up = calculateUpVector(fwd);
+}
+
+void CoordinateSystem::randomizeUpVector()
+{
+    double random0to1 = rand() / (RAND_MAX + 1.0);
+    up.rotateArbitrary(forward, (2 * M_PI) * random0to1);
+}
+
+void CoordinateSystem::randomizeOrientation()
+{
+    forward = Vector3::getRandomUnitVector();    
+    up = calculateUpVector(forward);
+}
+
+void CoordinateSystem::applyTransformation() const
+{
+    glTranslated(position.x, position.y, position.z);
+    
+    Vector3 right = getRight();
+    double a_matrix[16] =
+    {
+        right.x, right.y, right.z, 0.0,
+        forward.x, forward.y, forward.z, 0.0,
+        up.x, up.y, up.z, 0.0,
+        0.0, 0.0, 0.0, 1.0
+    };
+    glMultMatrixd(a_matrix);
+}
+
 void CoordinateSystem::reset()
 {
-    forward = {0, 0, -1};
-    up = {0, 1, 0};
-    position = {70000.0, 0.0, 70000.0};
+    this->forward = Vector3( 0,  0, -1);
+    this->up = Vector3( 0,  1,  0);
+    this->position = Vector3(0, 0, 0);
 }
 
 void CoordinateSystem::setCamera()
@@ -114,4 +193,21 @@ void CoordinateSystem::setCamera()
     gluLookAt(position.x, position.y, position.z,
               look_at.x, look_at.y, look_at.z,
               up.x,      up.y,      up.z);
+}
+
+Vector3 CoordinateSystem::calculateUpVector(const Vector3& fwd) const
+{
+    static const Vector3 IDEAL_UP_VECTOR(0.0, 1.0, 0.0);
+    static const double HALF_PI = 1.5707963267948966;
+    
+    if (fwd.isZero()) return IDEAL_UP_VECTOR;
+    
+    Vector3 axis = fwd.crossProduct(IDEAL_UP_VECTOR);
+    if (axis.isZero()) return Vector3(1.0, 0.0, 0.0);
+    else
+    {
+        axis.normalize();
+        Vector3 l_up = fwd.getRotatedArbitrary(axis, HALF_PI);
+        return l_up;
+    }
 }

@@ -133,11 +133,11 @@ void update()
     }
     if (key_pressed['a'] || key_pressed['A'])
     {
-        camera.moveLeft(MOVE_SPEED_SLOW);
+        camera.moveRight(-MOVE_SPEED_SLOW);
     }
     if (key_pressed['s'] || key_pressed['S'])
     {
-        camera.moveDown(MOVE_SPEED_SLOW);
+        camera.moveUp(-MOVE_SPEED_SLOW);
     }
     if (key_pressed['d'] || key_pressed['D'])
     {
@@ -152,31 +152,31 @@ void update()
     }
     if (key_pressed[','] || key_pressed['<'])
     {
-        camera.setRoll(THETA);
+        camera.rotateAroundForward(THETA);
     }
     if (key_pressed['.'] || key_pressed['>'])
     {
-        camera.setRoll(-THETA);
+        camera.rotateAroundForward(-THETA);
     }
     if (key_pressed['/'] || key_pressed['?'])
     {
-        camera.moveBackward(MOVE_SPEED_SLOW);
+        camera.moveForward(-MOVE_SPEED_SLOW);
     }
     if (special_key_pressed[GLUT_KEY_RIGHT])
     {
-        camera.setYaw(-THETA);
+        camera.rotateAroundUp(-THETA);
     }
     if (special_key_pressed[GLUT_KEY_LEFT])
     {
-        camera.setYaw(THETA);
+        camera.rotateAroundUp(THETA);
     }
     if (special_key_pressed[GLUT_KEY_UP])
     {
-        camera.setPitch(THETA);
+        camera.rotateAroundRight(THETA);
     }
     if (special_key_pressed[GLUT_KEY_DOWN])
     {
-        camera.setPitch(-THETA);
+        camera.rotateAroundRight(-THETA);
     }
     
 	sleep(TimeSystem::getTimeToNextFrame());
