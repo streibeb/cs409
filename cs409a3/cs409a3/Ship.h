@@ -10,15 +10,20 @@
 #define Ship_h
 
 #include "PhysicsObject.h"
-#include "TimeSystem.h"
 #include "WorldInterface.h"
+#include "TimeSystem.h"
 
-class Ship : PhysicsObject
+class DisplayList;
+class WorldInterface;
+struct PhysicsObjectId;
+
+class Ship : public PhysicsObject
 {
 private:
     const float RELOAD_TIME = 0.25;
     
 private:
+    CoordinateSystem camera;
     bool alive;
     float health;
     int ammoCount;
@@ -36,7 +41,7 @@ public:
     float getHealth() const;
     bool isReloaded() const;
     int getAmmo() const;
-    void setupCamera() const;
+    void setupCamera();
     CoordinateSystem getCameraCoordinateSystem() const;
     void setHealth(float health);
     void markReloading();

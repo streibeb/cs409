@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6145240C1C7C19B300FE721E /* PhysicsObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6145240A1C7C19B300FE721E /* PhysicsObject.cpp */; };
+		614524171C7C20E900FE721E /* Planetoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 614524151C7C20E900FE721E /* Planetoid.cpp */; };
+		6145241A1C7C290000FE721E /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 614524181C7C290000FE721E /* Ship.cpp */; };
+		614524201C7D40E300FE721E /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6145241E1C7D40E300FE721E /* Bullet.cpp */; };
+		614524231C7D410500FE721E /* WorldExplosions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 614524211C7D410500FE721E /* WorldExplosions.cpp */; };
 		61A8DC5A1C72BDA700B792AF /* CoordinateSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC501C72BDA700B792AF /* CoordinateSystem.cpp */; };
 		61A8DC5B1C72BDA700B792AF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC531C72BDA700B792AF /* main.cpp */; };
 		61A8DC5C1C72BDA700B792AF /* Sector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC541C72BDA700B792AF /* Sector.cpp */; };
 		61A8DC5D1C72BDA700B792AF /* Sleep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC561C72BDA700B792AF /* Sleep.cpp */; };
-		61A8DC5E1C72BDA700B792AF /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC581C72BDA700B792AF /* World.cpp */; };
+		61A8DC5E1C72BDA700B792AF /* World_old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC581C72BDA700B792AF /* World_old.cpp */; };
 		61A8DC7C1C72BDB500B792AF /* DisplayList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC601C72BDB500B792AF /* DisplayList.cpp */; };
 		61A8DC7D1C72BDB500B792AF /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC641C72BDB500B792AF /* Material.cpp */; };
 		61A8DC7E1C72BDB500B792AF /* MtlLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DC661C72BDB500B792AF /* MtlLibrary.cpp */; };
@@ -68,7 +73,6 @@
 		61A8DCDD1C72BE1A00B792AF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8DCDB1C72BE1A00B792AF /* OpenGL.framework */; };
 		61A8DCEA1C72BF0C00B792AF /* ExplosionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCDE1C72BF0C00B792AF /* ExplosionManager.cpp */; };
 		61A8DCEC1C72BF0C00B792AF /* TimeSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */; };
-		61A8DCED1C72BF0C00B792AF /* WorldExplosions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCE71C72BF0C00B792AF /* WorldExplosions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +128,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6145240A1C7C19B300FE721E /* PhysicsObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsObject.cpp; sourceTree = "<group>"; };
+		6145240B1C7C19B300FE721E /* PhysicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsObject.h; sourceTree = "<group>"; };
+		614524151C7C20E900FE721E /* Planetoid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Planetoid.cpp; sourceTree = "<group>"; };
+		614524161C7C20E900FE721E /* Planetoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planetoid.h; sourceTree = "<group>"; };
+		614524181C7C290000FE721E /* Ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ship.cpp; sourceTree = "<group>"; };
+		614524191C7C290000FE721E /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ship.h; sourceTree = "<group>"; };
+		6145241E1C7D40E300FE721E /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		6145241F1C7D40E300FE721E /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		614524211C7D410500FE721E /* WorldExplosions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldExplosions.cpp; sourceTree = "<group>"; };
+		614524221C7D410500FE721E /* WorldExplosions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldExplosions.h; sourceTree = "<group>"; };
 		61A8DC461C72BD6900B792AF /* cs409a3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cs409a3; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A8DC501C72BDA700B792AF /* CoordinateSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoordinateSystem.cpp; sourceTree = "<group>"; };
 		61A8DC511C72BDA700B792AF /* CoordinateSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateSystem.h; sourceTree = "<group>"; };
@@ -133,8 +147,8 @@
 		61A8DC551C72BDA700B792AF /* Sector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sector.h; sourceTree = "<group>"; };
 		61A8DC561C72BDA700B792AF /* Sleep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sleep.cpp; sourceTree = "<group>"; };
 		61A8DC571C72BDA700B792AF /* Sleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sleep.h; sourceTree = "<group>"; };
-		61A8DC581C72BDA700B792AF /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
-		61A8DC591C72BDA700B792AF /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		61A8DC581C72BDA700B792AF /* World_old.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World_old.cpp; sourceTree = "<group>"; };
+		61A8DC591C72BDA700B792AF /* World_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World_old.h; sourceTree = "<group>"; };
 		61A8DC601C72BDB500B792AF /* DisplayList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayList.cpp; sourceTree = "<group>"; };
 		61A8DC611C72BDB500B792AF /* DisplayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayList.h; sourceTree = "<group>"; };
 		61A8DC621C72BDB500B792AF /* GetGlut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetGlut.h; sourceTree = "<group>"; };
@@ -210,11 +224,8 @@
 		61A8DCDF1C72BF0C00B792AF /* ExplosionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplosionManager.h; sourceTree = "<group>"; };
 		61A8DCE01C72BF0C00B792AF /* ExplosionManagerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplosionManagerInterface.h; sourceTree = "<group>"; };
 		61A8DCE21C72BF0C00B792AF /* PhysicsObjectId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsObjectId.h; sourceTree = "<group>"; };
-		61A8DCE41C72BF0C00B792AF /* Planetoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planetoid.h; sourceTree = "<group>"; };
 		61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeSystem.cpp; sourceTree = "<group>"; };
 		61A8DCE61C72BF0C00B792AF /* TimeSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSystem.h; sourceTree = "<group>"; };
-		61A8DCE71C72BF0C00B792AF /* WorldExplosions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldExplosions.cpp; sourceTree = "<group>"; };
-		61A8DCE81C72BF0C00B792AF /* WorldExplosions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldExplosions.h; sourceTree = "<group>"; };
 		61A8DCE91C72BF0C00B792AF /* WorldInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldInterface.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,15 +265,22 @@
 		61A8DC481C72BD6900B792AF /* cs409a3 */ = {
 			isa = PBXGroup;
 			children = (
+				614524211C7D410500FE721E /* WorldExplosions.cpp */,
+				614524221C7D410500FE721E /* WorldExplosions.h */,
+				6145241E1C7D40E300FE721E /* Bullet.cpp */,
+				6145241F1C7D40E300FE721E /* Bullet.h */,
+				614524181C7C290000FE721E /* Ship.cpp */,
+				614524191C7C290000FE721E /* Ship.h */,
+				614524151C7C20E900FE721E /* Planetoid.cpp */,
+				614524161C7C20E900FE721E /* Planetoid.h */,
+				6145240A1C7C19B300FE721E /* PhysicsObject.cpp */,
+				6145240B1C7C19B300FE721E /* PhysicsObject.h */,
 				61A8DCDE1C72BF0C00B792AF /* ExplosionManager.cpp */,
 				61A8DCDF1C72BF0C00B792AF /* ExplosionManager.h */,
 				61A8DCE01C72BF0C00B792AF /* ExplosionManagerInterface.h */,
 				61A8DCE21C72BF0C00B792AF /* PhysicsObjectId.h */,
-				61A8DCE41C72BF0C00B792AF /* Planetoid.h */,
 				61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */,
 				61A8DCE61C72BF0C00B792AF /* TimeSystem.h */,
-				61A8DCE71C72BF0C00B792AF /* WorldExplosions.cpp */,
-				61A8DCE81C72BF0C00B792AF /* WorldExplosions.h */,
 				61A8DCE91C72BF0C00B792AF /* WorldInterface.h */,
 				61A8DC501C72BDA700B792AF /* CoordinateSystem.cpp */,
 				61A8DC511C72BDA700B792AF /* CoordinateSystem.h */,
@@ -272,8 +290,8 @@
 				61A8DC551C72BDA700B792AF /* Sector.h */,
 				61A8DC561C72BDA700B792AF /* Sleep.cpp */,
 				61A8DC571C72BDA700B792AF /* Sleep.h */,
-				61A8DC581C72BDA700B792AF /* World.cpp */,
-				61A8DC591C72BDA700B792AF /* World.h */,
+				61A8DC581C72BDA700B792AF /* World_old.cpp */,
+				61A8DC591C72BDA700B792AF /* World_old.h */,
 			);
 			path = cs409a3;
 			sourceTree = "<group>";
@@ -419,10 +437,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				614524231C7D410500FE721E /* WorldExplosions.cpp in Sources */,
 				61A8DC7F1C72BDB500B792AF /* MtlLibraryManager.cpp in Sources */,
+				6145240C1C7C19B300FE721E /* PhysicsObject.cpp in Sources */,
 				61A8DC861C72BDB500B792AF /* Vector2.cpp in Sources */,
 				61A8DC821C72BDB500B792AF /* SpriteFont.cpp in Sources */,
 				61A8DC7C1C72BDB500B792AF /* DisplayList.cpp in Sources */,
+				614524171C7C20E900FE721E /* Planetoid.cpp in Sources */,
 				61A8DC811C72BDB500B792AF /* ObjStringParsing.cpp in Sources */,
 				61A8DC7E1C72BDB500B792AF /* MtlLibrary.cpp in Sources */,
 				61A8DC871C72BDB500B792AF /* Vector3.cpp in Sources */,
@@ -431,12 +452,13 @@
 				61A8DC7D1C72BDB500B792AF /* Material.cpp in Sources */,
 				61A8DC5C1C72BDA700B792AF /* Sector.cpp in Sources */,
 				61A8DCEC1C72BF0C00B792AF /* TimeSystem.cpp in Sources */,
-				61A8DCED1C72BF0C00B792AF /* WorldExplosions.cpp in Sources */,
-				61A8DC5E1C72BDA700B792AF /* World.cpp in Sources */,
+				61A8DC5E1C72BDA700B792AF /* World_old.cpp in Sources */,
 				61A8DC5B1C72BDA700B792AF /* main.cpp in Sources */,
 				61A8DCEA1C72BF0C00B792AF /* ExplosionManager.cpp in Sources */,
 				61A8DC841C72BDB500B792AF /* TextureBmp.cpp in Sources */,
+				614524201C7D40E300FE721E /* Bullet.cpp in Sources */,
 				61A8DC5A1C72BDA700B792AF /* CoordinateSystem.cpp in Sources */,
+				6145241A1C7C290000FE721E /* Ship.cpp in Sources */,
 				61A8DC5D1C72BDA700B792AF /* Sleep.cpp in Sources */,
 				61A8DC851C72BDB500B792AF /* TextureManager.cpp in Sources */,
 			);

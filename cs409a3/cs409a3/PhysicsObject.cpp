@@ -11,7 +11,7 @@
 
 PhysicsObject::PhysicsObject ()
 {
-    displayListSet = false;
+    
 }
 
 PhysicsObject::PhysicsObject (double radius)
@@ -32,7 +32,6 @@ PhysicsObject::PhysicsObject (const PhysicsObjectId& id,
     this->velocity = velocity;
     this->displayList = display_list;
     this->scale = display_scale;
-    displayListSet = true;
 }
 
 PhysicsObject::PhysicsObject (const PhysicsObject& original)
@@ -40,9 +39,17 @@ PhysicsObject::PhysicsObject (const PhysicsObject& original)
     copy(original);
 }
 
+PhysicsObject::~PhysicsObject()
+{
+    
+}
+
 PhysicsObject& PhysicsObject::operator= (const PhysicsObject& original)
 {
-    copy(original);
+    if(&original != this)
+    {
+        copy(original);
+    }
     return *this;
 }
 
@@ -56,7 +63,6 @@ void PhysicsObject::copy(const PhysicsObject &p)
     this->velocity = p.velocity;
     this->displayList = p.displayList;
     this->scale = p.scale;
-    displayListSet = true;
 }
 
 const PhysicsObjectId& PhysicsObject::getId () const
@@ -105,7 +111,7 @@ double PhysicsObject::getRadius () const
 
 const Vector3& PhysicsObject::getForward () const
 {
-    return coordinateSystem.getForward();
+    return coordinateSystem.getForward();;
 }
 
 const Vector3& PhysicsObject::getUp () const
@@ -120,7 +126,7 @@ Vector3 PhysicsObject::getRight () const
 
 double PhysicsObject::getSpeed () const
 {
-    Vector3 pos = coordinateSystem.getPosition();
+    Vector3 pos = velocity;
     return sqrt(pow(pos.x, 2.0) + pow(pos.y, 2.0) + pow(pos.z, 2.0));
 }
 
@@ -131,14 +137,13 @@ Vector3 PhysicsObject::getVelocity () const
 
 bool PhysicsObject::isDisplayListSet () const
 {
-    return displayListSet;
+    return !displayList.isEmpty();
 }
 
 void PhysicsObject::draw () const
 {
-    Vector3 pos = coordinateSystem.getPosition();
     glPushMatrix();
-        glTranslated(pos.x, pos.y, pos.z);
+        coordinateSystem.applyTransformation();
         glScalef(radius, radius, radius);
         displayList.draw();
     glPopMatrix();
@@ -188,7 +193,7 @@ void PhysicsObject::setRadius (double radius)
 
 void PhysicsObject::setOrientation (const Vector3& forward)
 {
-    this->setOrientation(forward);
+    coordinateSystem.setOrientation(forward);
 }
 
 void PhysicsObject::setOrientation (const Vector3& forward,
@@ -226,7 +231,7 @@ void PhysicsObject::rotateTowards (const Vector3& forward,
 void PhysicsObject::setSpeed (double speed)
 {
     velocity.normalize();
-    velocity = velocity * speed;
+    velocity = getForward() * speed;
 }
 
 void PhysicsObject::setVelocity (const Vector3& velocity)
@@ -244,12 +249,11 @@ void PhysicsObject::setDisplayList (const DisplayList& display_list,
 {
     this->displayList = display_list;
     this->scale = display_scale;
-    displayListSet = true;
 }
 
 void PhysicsObject::setDisplayListNone ()
 {
-    displayListSet = false;
+    this->displayList.makeEmpty();
 }
 
 void PhysicsObject::randomizeUpVector ()
@@ -265,5 +269,6 @@ void PhysicsObject::randomizeOrientation ()
 void PhysicsObject::updateBasic ()
 {
     setPositionPreviousToCurrent();
-    coordinateSystem.moveForward(getSpeed());
+    addPosition(velocity);
+    //coordinateSystem.moveForward(getSpeed());
 }

@@ -5,8 +5,8 @@
 #include <cassert>
 #include "GetGlut.h"
 
-#include "ObjLibrary/Vector3.h"
-#include "ObjLibrary/DisplayList.h"
+#include "../../ObjLibrary/Vector3.h"
+#include "../../ObjLibrary/DisplayList.h"
 
 #include "TimeSystem.h"
 #include "WorldInterface.h"

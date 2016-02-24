@@ -10,7 +10,8 @@
 
 Ship::Ship() : PhysicsObject()
 {
-    
+    reloading = false;
+    this->reloadTimer = RELOAD_TIME;
 }
 
 Ship::Ship(int health, int ammo) : PhysicsObject()
@@ -32,12 +33,14 @@ Ship::~Ship()
 
 Ship& Ship::operator=(const Ship& s)
 {
+    PhysicsObject::operator=(s);
     copy(s);
     return *this;
 }
 
 void Ship::copy(const Ship& s)
 {
+    this->camera = s.camera;
     this->alive = s.alive;
     this->health = s.health;
     this->ammoCount = s.ammoCount;
@@ -51,7 +54,7 @@ float Ship::getHealth() const
 
 bool Ship::isReloaded() const
 {
-    return (reloadTimer <= 0);
+    return (reloadTimer <= 0.f);
 }
 
 int Ship::getAmmo() const
@@ -59,19 +62,22 @@ int Ship::getAmmo() const
     return ammoCount;
 }
 
-void Ship::setupCamera() const
+void Ship::setupCamera()
 {
-    // What do I do here?
+    Vector3 p = getPosition();
+    Vector3 f = getForward();
+    Vector3 u = getUp();
+    Vector3 position = p - 75*f + 15*u;
+    
+    camera.setPosition(position);
+    gluLookAt(position.x, position.y, position.z,
+              p.x, p.y, p.z,
+              u.x,      u.y,      u.z);
 }
 
 CoordinateSystem Ship::getCameraCoordinateSystem() const
 {
-    // What do I do here?
-    // This doesn't seem right
-    //return CoordinateSystem(getPosition(), getForward(), getUp());
-    
-    // Future Vince, I made the coordinate system a protected variable.
-    return coordinateSystem;
+    return camera;
 }
 
 void Ship::setHealth(float health)
@@ -137,6 +143,7 @@ void Ship::update(WorldInterface& r_world)
     if (reloading)
     {
         reloadTimer -= TimeSystem::getFrameDuration();
+        if (reloadTimer <= 0) markNotReloading();
     }
     if (health <= 0.0)
     {

@@ -5,7 +5,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include "ObjLibrary/Vector3.h"
+#include "../../ObjLibrary/Vector3.h"
 
 #include "PhysicsObjectId.h"
 #include "PhysicsObject.h"

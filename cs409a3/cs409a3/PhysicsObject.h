@@ -71,16 +71,12 @@ class PhysicsObject
 {
 private:
     PhysicsObjectId id;
-    //CoordinateSystem coordinateSystem;
+    CoordinateSystem coordinateSystem;
     Vector3 velocity;
     Vector3 previousPosition;
     double radius;
-    bool displayListSet;
     DisplayList displayList;
     double scale;
-    
-protected:
-    CoordinateSystem coordinateSystem;
     
 public:
 //
@@ -191,7 +187,7 @@ public:
 //               with this PhysicsObject is freed.
 //
 
-    virtual ~PhysicsObject () = 0;
+    virtual ~PhysicsObject ();
 
 //
 //  Assignment Operator

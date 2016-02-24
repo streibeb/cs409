@@ -13,7 +13,7 @@
 #include "../../ObjLibrary/Vector3.h"
 #include "../../ObjLibrary/ObjModel.h"
 #include "../../ObjLibrary/DisplayList.h"
-#include "World.h"
+#include "World_old.h"
 
 struct SectorId
 {
