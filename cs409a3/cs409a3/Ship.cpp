@@ -11,14 +11,12 @@
 Ship::Ship() : PhysicsObject()
 {
     reloading = false;
-    this->reloadTimer = RELOAD_TIME;
 }
 
 Ship::Ship(int health, int ammo) : PhysicsObject()
 {
     this->health = health;
     this->ammoCount = ammo;
-    this->reloadTimer = RELOAD_TIME;
 }
 
 Ship::Ship(const Ship& s) : PhysicsObject(s)
@@ -71,7 +69,7 @@ void Ship::setupCamera()
     
     camera.setPosition(position);
     gluLookAt(position.x, position.y, position.z,
-              p.x, p.y, p.z,
+              p.x,      p.y,      p.z,
               u.x,      u.y,      u.z);
 }
 
@@ -92,12 +90,12 @@ void Ship::setHealth(float health)
 void Ship::markReloading()
 {
     reloading = true;
+    reloadTimer = RELOAD_TIME;
 }
 
 void Ship::markNotReloading()
 {
     reloading = false;
-    reloadTimer = RELOAD_TIME;
 }
 
 void Ship::setAmmo(int newAmt)

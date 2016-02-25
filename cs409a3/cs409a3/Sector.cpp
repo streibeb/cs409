@@ -29,9 +29,7 @@ Vector3 calculateVector3(SectorId s, int size)
 
 Sector::Sector()
 {
-    //ObjModel particleModel;
-    //particleModel.load("Models/RingParticleA0.obj");
-    //particleModel_list = particleModel.getDisplayList();
+
 }
 
 Sector::~Sector()

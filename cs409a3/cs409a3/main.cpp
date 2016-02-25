@@ -133,6 +133,7 @@ void init()
     player_ship.setAmmo(8);
     player_ship.setSpeed(250.f);
 
+    // Bullet init
     ObjModel b;
     b.load("Models/Bolt.obj");
     DisplayList b_dl = b.getDisplayList();
@@ -161,18 +162,6 @@ void keyboard(unsigned char key, int x, int y)
 	{
         case 27: // on [ESC]
             exit(0); // normal exit
-            break;
-        case ' ':
-            if (player_ship.isReloaded())
-            {
-                printf("Can't fire bullet\n");
-                break;
-            }
-            bullets[nextBullet].fire(player_ship.getPosition(),
-                                     player_ship.getForward(),
-                                     player_ship.getId());
-            nextBullet = (nextBullet + 1) % BULLET_COUNT;
-            player_ship.markReloading();
             break;
 	}
 }
@@ -236,6 +225,20 @@ void update()
         bullets[i].update(explosions);
     }
     
+    if (key_pressed[' '])
+    {
+        if (player_ship.isReloaded())
+        {
+            printf("Firing bullet %i!\n", nextBullet);
+            bullets[nextBullet].fire(player_ship.getPosition(),
+                                     player_ship.getForward(),
+                                     player_ship.getId());
+            nextBullet = (nextBullet + 1) % BULLET_COUNT;
+            player_ship.markReloading();
+
+        }
+    }
+    
 	sleep(TimeSystem::getTimeToNextFrame());
     TimeSystem::markFrameEnd();
 	glutPostRedisplay();
@@ -271,11 +274,16 @@ void display()
     world.drawMoons();
     world.drawRings(camera);
     
+    // Draw AI ships
     for (int i = 0; i < SHIP_COUNT; i++)
     {
         ships[i].draw();
     }
+    
+    // Draw player ship
     player_ship.draw();
+    
+    // Draw bullets
     for (int i = 0; i < BULLET_COUNT; i++)
     {
         bullets[i].draw();

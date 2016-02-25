@@ -38,21 +38,227 @@ public:
     
     Ship& operator=(const Ship& s);
     
+    //
+    //  getHealth
+    //
+    //  Purpose: To determine the health of the ship
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: The health of this ship
+    //  Side Effect: N/A
+    //
+    
     float getHealth() const;
+    
+    //
+    //  isReloaded
+    //
+    //  Purpose: To determine if this ship is currently
+    //           reloading
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: Whether this ship is reloading. True means
+    //           the ship is done reloading, and vice versa.
+    //  Side Effect: N/A
+    //
+    
     bool isReloaded() const;
+    
+    //
+    //  getAmmo
+    //
+    //  Purpose: To determine the amount of ammo this ship has
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: The amount of ammo this ship has
+    //  Side Effect: N/A
+    //
+    
     int getAmmo() const;
+    
+    //
+    //  setupCamera
+    //
+    //  Purpose: To position the camera behind and aboce this ship
+    //           looking in the same direction of the ship's forward
+    //           vector
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: Positions the camera in a location behind and
+    //               above this ship, looking in the same direction
+    //               as the ship
+    //
+    
     void setupCamera();
+    
+    //
+    //  getCameraCoordinateSystem
+    //
+    //  Purpose: To allow other objects access to this ship's camera's
+    //           coordinate system
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: The coordinate system of the camera attached to this
+    //           ship
+    //  Side Effect: N/A
+    //
+    
     CoordinateSystem getCameraCoordinateSystem() const;
+    
+    //
+    //  setHealth
+    //
+    //  Purpose: To change this ship's health
+    //  Parameter(s):
+    //    <1> health: The new health of the ship
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: This ship's health is set to the new health value
+    //
+    
     void setHealth(float health);
+    
+    //
+    //  markReloading
+    //
+    //  Purpose: To begin the reload timer
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: This ship's reload timer begins, preventing any
+    //               firing until complete.
+    //
+    
     void markReloading();
+    
+    //
+    //  markNotReloading
+    //
+    //  Purpose: To end the reload timer
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: This ship's reload timer ends, allowing the ship
+    //               to fire again
+    //
+    
     void markNotReloading();
+    
+    //
+    //  setAmmo
+    //
+    //  Purpose: To change this ship's ammo count
+    //  Parameter(s):
+    //    <1> newAmt: The new ammo count of the ship
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: This ship's ammo count is set to the new value
+    //
+    
     void setAmmo(int newAmt);
+    
+    //
+    //  addAmmo
+    //
+    //  Purpose: To add ammo to the ship's ammo count
+    //  Parameter(s):
+    //    <1> increase: The amount of ammo to add
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: This ship's ammo count is increased by increase
+    //
+    
     void addAmmo(int increase);
     
-    PhysicsObject* getClone() const;
-    bool isAlive() const;
-    bool isDying() const;
-    void markDead(bool instant);
+    //
+    //  getClone
+    //
+    //  Purpose: To create a dynamically allocated copy of this
+    //           PhysicsObject.
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: A deep copy of this PhysicsObject.  This copy
+    //           should be created using the copy constructor for
+    //           the derived class.
+    //  Side Effect: N/A
+    //
+    
+    virtual PhysicsObject* getClone () const;
+    
+    //
+    //  isAlive
+    //
+    //  Purpose: To determine if this PhysicsObject is alive.
+    //  Parameter(s): N/A
+    //  Precondition(s): N/A
+    //  Returns: Whether this PhysicsObject is alive.  If this
+    //           PhysicsObject is of a type that cannot become dead,
+    //           true is returned.
+    //  Side Effect: N/A
+    //
+    
+    virtual bool isAlive () const;
+    
+    //
+    //  isDying
+    //
+    //  Purpose: To determine if this PhysicsObject is currently
+    //           dying.  This function can be used to prevent a
+    //           PhysicsObject being counted twice.  For example, a
+    //           bullet should not hit the same target twice.
+    //  Parameter(s): N/A
+    //  Precondition(s):
+    //    <1> isAlive()
+    //  Returns: Whether this PhysicsObject is going to be marked as
+    //           dead the next time that update is called.  If this
+    //           PhysicsObject is of a type that cannot become dead,
+    //           false is returned.
+    //  Side Effect: N/A
+    //
+    
+    virtual bool isDying () const;
+    
+    //
+    //  markDead
+    //
+    //  Purpose: To mark this PhysicsObject as dead.
+    //  Parameter(s):
+    //    <1> instant: Whether the PhysicsObject should be marked as
+    //                 dead immediately
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: If this PhysicsObject is of a type that cannot
+    //               become dead, there is no effect. Otherwise, if
+    //               instant == true, this PhysicisObject is
+    //               marked as dead and no death actions - such as
+    //               generating a death explosion - are performed.
+    //               If this PhysicsObject can become dead and
+    //               instant == false, this PhysicsObject is marked
+    //               as dying.  The next time that update is called,
+    //               any death actions - such as generating a death
+    //               explosion - will be performed and this
+    //               PhysicsObject will be marked as dead.
+    //
+    
+    virtual void markDead (bool instant);
+    
+    //
+    //  update
+    //
+    //  Purpose: To update this PhysicsObject for one frame.  This
+    //           function does not perform collision checking or
+    //           handling.
+    //  Parameter(s):
+    //    <1> r_world: An interface to the world this PhysicsObject
+    //                 is in
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: This PhysicsObject is updated for one frame.
+    //               Any queries about or changes to the world it is
+    //               in are resolved through r_world.
+    //
+
     void update(WorldInterface& r_world);
     
 private:

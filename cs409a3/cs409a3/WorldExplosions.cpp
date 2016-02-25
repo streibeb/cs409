@@ -75,7 +75,7 @@ void WorldExplosions :: init ()
 	if(!isInitialized())
 	{
 		assert(mp_explosion_manager != NULL);
-		mp_explosion_manager->init("Explode1.png", 15);
+		mp_explosion_manager->init("Explode1.bmp", 15);
 	}
 
 	assert(invariant());

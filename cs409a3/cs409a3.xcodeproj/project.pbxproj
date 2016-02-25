@@ -73,6 +73,8 @@
 		61A8DCDD1C72BE1A00B792AF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8DCDB1C72BE1A00B792AF /* OpenGL.framework */; };
 		61A8DCEA1C72BF0C00B792AF /* ExplosionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCDE1C72BF0C00B792AF /* ExplosionManager.cpp */; };
 		61A8DCEC1C72BF0C00B792AF /* TimeSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */; };
+		61D810DB1C7EB83B0059A8BF /* Explode1.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61D810D91C7EB83B0059A8BF /* Explode1.bmp */; };
+		61D810DC1C7EB83B0059A8BF /* Explode1.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61D810DA1C7EB83B0059A8BF /* Explode1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -122,6 +124,17 @@
 				61A8DCD71C72BDE500B792AF /* Skybox.mtl in CopyFiles */,
 				61A8DCD81C72BDE500B792AF /* Skybox.obj in CopyFiles */,
 				61A8DCD91C72BDE500B792AF /* skybox1.bmp in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61D810D81C7EB8230059A8BF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				61D810DB1C7EB83B0059A8BF /* Explode1.bmp in CopyFiles */,
+				61D810DC1C7EB83B0059A8BF /* Explode1.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +240,8 @@
 		61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeSystem.cpp; sourceTree = "<group>"; };
 		61A8DCE61C72BF0C00B792AF /* TimeSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSystem.h; sourceTree = "<group>"; };
 		61A8DCE91C72BF0C00B792AF /* WorldInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldInterface.h; sourceTree = "<group>"; };
+		61D810D91C7EB83B0059A8BF /* Explode1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = Explode1.bmp; path = cs409a3/Explode1.bmp; sourceTree = "<group>"; };
+		61D810DA1C7EB83B0059A8BF /* Explode1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Explode1.png; path = cs409a3/Explode1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +260,8 @@
 		61A8DC3D1C72BD6800B792AF = {
 			isa = PBXGroup;
 			children = (
+				61D810D91C7EB83B0059A8BF /* Explode1.bmp */,
+				61D810DA1C7EB83B0059A8BF /* Explode1.png */,
 				61A8DCDA1C72BE1A00B792AF /* GLUT.framework */,
 				61A8DCDB1C72BE1A00B792AF /* OpenGL.framework */,
 				61A8DC5F1C72BDB500B792AF /* ObjLibrary */,
@@ -391,6 +408,7 @@
 				61A8DC421C72BD6800B792AF /* Sources */,
 				61A8DC431C72BD6800B792AF /* Frameworks */,
 				61A8DC441C72BD6800B792AF /* CopyFiles */,
+				61D810D81C7EB8230059A8BF /* CopyFiles */,
 			);
 			buildRules = (
 			);
