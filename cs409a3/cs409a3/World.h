@@ -1,6 +1,16 @@
 //
 //  World.h
 //
+///////////////////////////////////////////////////////////////
+//
+//  NOTE TO MARKER:
+//  I was attempting to implement the WorldInterface for this
+//  assignment, but I ran out of time.  I've included this file
+//  just for the sake of having it.  It is not used in the
+//  program to draw the world (See World_old.h instead)
+//
+///////////////////////////////////////////////////////////////
+//
 
 #ifndef WORLD_H
 #define WORLD_H

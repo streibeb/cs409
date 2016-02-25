@@ -75,6 +75,7 @@
 		61A8DCEC1C72BF0C00B792AF /* TimeSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8DCE51C72BF0C00B792AF /* TimeSystem.cpp */; };
 		61D810DB1C7EB83B0059A8BF /* Explode1.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61D810D91C7EB83B0059A8BF /* Explode1.bmp */; };
 		61D810DC1C7EB83B0059A8BF /* Explode1.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61D810DA1C7EB83B0059A8BF /* Explode1.png */; };
+		61D810DF1C7EB9B60059A8BF /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61D810DD1C7EB9B60059A8BF /* World.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -242,6 +243,8 @@
 		61A8DCE91C72BF0C00B792AF /* WorldInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldInterface.h; sourceTree = "<group>"; };
 		61D810D91C7EB83B0059A8BF /* Explode1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = Explode1.bmp; path = cs409a3/Explode1.bmp; sourceTree = "<group>"; };
 		61D810DA1C7EB83B0059A8BF /* Explode1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Explode1.png; path = cs409a3/Explode1.png; sourceTree = "<group>"; };
+		61D810DD1C7EB9B60059A8BF /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		61D810DE1C7EB9B60059A8BF /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +285,8 @@
 		61A8DC481C72BD6900B792AF /* cs409a3 */ = {
 			isa = PBXGroup;
 			children = (
+				61D810DD1C7EB9B60059A8BF /* World.cpp */,
+				61D810DE1C7EB9B60059A8BF /* World.h */,
 				614524211C7D410500FE721E /* WorldExplosions.cpp */,
 				614524221C7D410500FE721E /* WorldExplosions.h */,
 				6145241E1C7D40E300FE721E /* Bullet.cpp */,
@@ -466,6 +471,7 @@
 				61A8DC7E1C72BDB500B792AF /* MtlLibrary.cpp in Sources */,
 				61A8DC871C72BDB500B792AF /* Vector3.cpp in Sources */,
 				61A8DC831C72BDB500B792AF /* Texture.cpp in Sources */,
+				61D810DF1C7EB9B60059A8BF /* World.cpp in Sources */,
 				61A8DC801C72BDB500B792AF /* ObjModel.cpp in Sources */,
 				61A8DC7D1C72BDB500B792AF /* Material.cpp in Sources */,
 				61A8DC5C1C72BDA700B792AF /* Sector.cpp in Sources */,
