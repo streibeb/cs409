@@ -5,14 +5,10 @@
 #include <stdlib.h>
 #include "GetGlut.h"
 #include "Sleep.h"
-#include "World_old.h"
 #include "TimeSystem.h"
-
-#include "WorldExplosions.h"
-#include "PhysicsObject.h"
-#include "Planetoid.h"
-#include "Ship.h"
-#include "Bullet.h"
+#include "../../ObjLibrary/ObjModel.h"
+#include "../../ObjLibrary/DisplayList.h"
+#include "World.h"
 
 void init();
 void initDisplay();
@@ -24,51 +20,20 @@ void update();
 void reshape(int w, int h);
 void display();
 
-// Models
-const int MOON_COUNT = 10;
-const int SHIP_COUNT = 250;
-const int BULLET_COUNT = 100;
-
-struct objInfo
-{
-    std::string filename;
-    float radius;
-    Vector3 position;
-};
-
-objInfo moonInfo[MOON_COUNT] = {
-    {"Models/MoonA.obj", 3300.f, {0.f, 0.f, 140000.f}},
-    {"Models/MoonB.obj", 4300.f, {85000.f, 0.f, 75000.f}},
-    {"Models/MoonC.obj", 2000.f, {130000.f, 0.f, 40000.f}},
-    {"Models/MoonD.obj", 3400.f, {110000.f, 0.f, -60000.f}},
-    {"Models/MoonE.obj", 5000.f, {100000.f, 0.f, -70000.f}},
-    {"Models/MoonF.obj", 3100.f, {20000.f, 0.f, -135000.f}},
-    {"Models/MoonG.obj", 2600.f, {-60000.f, 0.f, -80000.f}},
-    {"Models/MoonH.obj", 2200.f, {-95000.f, 0.f, -70000.f}},
-    {"Models/MoonI.obj", 4700.f, {-90000.f, 0.f, -40000.f}},
-    {"Models/MoonJ.obj", 3800.f, {-100000.f, 0.f, 50000.f}}
-};
-
-WorldExplosions explosions;
-World_old world;
-
-Ship ships[SHIP_COUNT];
-Ship player_ship;
-Bullet bullets[BULLET_COUNT];
-int nextBullet = 0;
+World world;
 
 // Improved keyboard stuff
 bool key_pressed[256];
 bool special_key_pressed[128];
 
-int main2(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
 	glutInitWindowSize(640, 480);
 	glutInitWindowPosition(0, 0);
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGB);
-	glutCreateWindow("CS 409 Assignment 3");
+	glutCreateWindow("CS 409 Assignment 4");
 	glutKeyboardFunc(keyboard);
     glutKeyboardUpFunc(keyboardUp);
 	glutSpecialFunc(special);
@@ -99,48 +64,8 @@ void init()
     }
     
     initDisplay();
-    explosions.init();
     world.init();
-    
-    // Ship Init
-    ObjModel s;
-    s.load("Models/Grapple.obj");
-    DisplayList s_dl = s.getDisplayList();
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        PhysicsObjectId s_id = PhysicsObjectId(PhysicsObjectId::TYPE_SHIP,
-                                               PhysicsObjectId::FLEET_ENEMY,
-                                               i);
-        
-        int moonIndex = rand() % MOON_COUNT;
-        Vector3 pos = moonInfo[moonIndex].position
-        + Vector3::getRandomUnitVector()
-        * (moonInfo[moonIndex].radius + 500.0);
-        
-        ships[i].initPhysics(s_id, pos, 100.f, Vector3::getRandomUnitVector(), s_dl, 1.f);
-        ships[i].setHealth(1);
-        ships[i].setAmmo(0);
-        ships[i].setSpeed(0.f);
-    }
-    
-    // Player Ship Init
-    PhysicsObjectId ps_id = PhysicsObjectId(PhysicsObjectId::TYPE_SHIP,
-                                            PhysicsObjectId::FLEET_PLAYER,
-                                            0);
-    Vector3 pos = Vector3(0.f, 15000.f, 140000.f);
-    player_ship.initPhysics(ps_id, pos, 10.f, Vector3::getRandomUnitVector(), s_dl, 1.f);
-    player_ship.setHealth(10);
-    player_ship.setAmmo(8);
-    player_ship.setSpeed(250.f);
 
-    // Bullet init
-    ObjModel b;
-    b.load("Models/Bolt.obj");
-    DisplayList b_dl = b.getDisplayList();
-    for (int i = 0; i < BULLET_COUNT; i++)
-    {
-        bullets[i].initPhysics(PhysicsObjectId::TYPE_BULLET, {0, 0, 0}, 10.f, {0, 0, 0}, b_dl, 1.f);
-    }
 }
 
 void initDisplay()
@@ -186,58 +111,47 @@ void update()
     float TURN_SPEED = 0.05;
     if (key_pressed['f'] || key_pressed['F'])
     {
-        player_ship.setSpeed(2500);
+        world.player_ship.setSpeed(2500);
     }
     else if (key_pressed['s'] || key_pressed['S'])
     {
-        player_ship.setSpeed(50);
+        world.player_ship.setSpeed(50);
         TURN_SPEED /= 5;
     }
     else
     {
-        player_ship.setSpeed(250);
+        world.player_ship.setSpeed(250);
     }
     
     if (special_key_pressed[GLUT_KEY_RIGHT])
     {
-        player_ship.rotateAroundUp(-TURN_SPEED);
+        world.player_ship.rotateAroundUp(-TURN_SPEED);
     }
     if (special_key_pressed[GLUT_KEY_LEFT])
     {
-        player_ship.rotateAroundUp(TURN_SPEED);
+        world.player_ship.rotateAroundUp(TURN_SPEED);
     }
     if (special_key_pressed[GLUT_KEY_UP])
     {
-        player_ship.rotateAroundRight(TURN_SPEED);
+        world.player_ship.rotateAroundRight(TURN_SPEED);
     }
     if (special_key_pressed[GLUT_KEY_DOWN])
     {
-        player_ship.rotateAroundRight(-TURN_SPEED);
-    }
-    
-    player_ship.update(explosions);
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        ships[i].update(explosions);
-    }
-    for (int i = 0; i < BULLET_COUNT; i++)
-    {
-        bullets[i].update(explosions);
+        world.player_ship.rotateAroundRight(-TURN_SPEED);
     }
     
     if (key_pressed[' '])
     {
-        if (player_ship.isReloaded())
+        if (world.player_ship.isReloaded())
         {
-            printf("Firing bullet %i!\n", nextBullet);
-            bullets[nextBullet].fire(player_ship.getPosition(),
-                                     player_ship.getForward(),
-                                     player_ship.getId());
-            nextBullet = (nextBullet + 1) % BULLET_COUNT;
-            player_ship.markReloading();
-
+            world.addBullet(world.player_ship.getPosition(),
+                            world.player_ship.getForward(),
+                            world.player_ship.getId());
+            world.player_ship.markReloading();
         }
     }
+    
+    world.updateAll();
     
 	sleep(TimeSystem::getTimeToNextFrame());
     TimeSystem::markFrameEnd();
@@ -264,30 +178,12 @@ void display()
 
 	glLoadIdentity();
 	// set up the camera here
-    player_ship.setupCamera();
-
-    // Draw the world
-    CoordinateSystem camera = player_ship.getCameraCoordinateSystem();
-    Vector3 p = camera.getPosition();
-    world.drawSkybox(camera);
-    world.drawSaturn();
-    world.drawMoons();
-    world.drawRings(camera);
-    
-    // Draw AI ships
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        ships[i].draw();
-    }
+    world.player_ship.setupCamera();
+    CoordinateSystem camera = world.player_ship.getCameraCoordinateSystem();
     
     // Draw player ship
-    player_ship.draw();
-    
-    // Draw bullets
-    for (int i = 0; i < BULLET_COUNT; i++)
-    {
-        bullets[i].draw();
-    }
+    world.player_ship.draw();
+    world.draw(camera.getForward(), camera.getUp());
     
 	// send the current image to the screen - any drawing after here will not display
 	glutSwapBuffers();

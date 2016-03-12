@@ -127,7 +127,8 @@ Vector3 PhysicsObject::getRight () const
 double PhysicsObject::getSpeed () const
 {
     Vector3 pos = velocity;
-    return sqrt(pow(pos.x, 2.0) + pow(pos.y, 2.0) + pow(pos.z, 2.0));
+    return pos.getNorm();
+    //return sqrt((pos.x * pos.x) + (pos.y * pos.y) + (pos.z * pos.z));
 }
 
 Vector3 PhysicsObject::getVelocity () const
@@ -156,10 +157,12 @@ void PhysicsObject::initPhysics (const PhysicsObjectId& id,
                                  const DisplayList& display_list,
                                  double display_scale)
 {
+    // Fix orientation issue here
     this->id = id;
     coordinateSystem.setPosition(position);
     this->radius = radius;
     this->velocity = velocity;
+    if (!velocity.isZero()) setOrientation(velocity.getNormalized());
     this->displayList = display_list;
     this->scale = display_scale;
     setPositionPreviousToCurrent();
@@ -237,11 +240,13 @@ void PhysicsObject::setSpeed (double speed)
 void PhysicsObject::setVelocity (const Vector3& velocity)
 {
     this->velocity = velocity;
+    if (!velocity.isZero()) setOrientation(velocity.getNormalized());
 }
 
 void PhysicsObject::addVelocity (const Vector3& increase)
 {
     velocity += increase;
+    if (!velocity.isZero()) setOrientation(velocity.getNormalized());
 }
 
 void PhysicsObject::setDisplayList (const DisplayList& display_list,
@@ -269,6 +274,5 @@ void PhysicsObject::randomizeOrientation ()
 void PhysicsObject::updateBasic ()
 {
     setPositionPreviousToCurrent();
-    addPosition(velocity);
-    //coordinateSystem.moveForward(getSpeed());
+    addPosition(velocity * TimeSystem::getFrameDuration());
 }

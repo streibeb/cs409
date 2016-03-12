@@ -70,10 +70,21 @@ void World :: draw (const Vector3& camera_forward,
     {
         moons[i].draw();
     }
+    g_rings.draw(player_ship.getCameraCoordinateSystem());
     for (int i = 0; i < SHIP_COUNT; i++)
     {
-        ships[i].draw();
+        if (ships[i].isAlive()) ships[i].draw();
     }
+    for (int i = 0; i < BULLET_COUNT; i++)
+    {
+        if (bullets[i].isAlive()) bullets[i].draw();
+    }
+    
+    glPushMatrix();
+        glTranslatef(ringInfo.position.x, ringInfo.position.y, ringInfo.position.z);
+        glScalef(ringInfo.radius, ringInfo.radius, ringInfo.radius);
+        ring_list.draw();
+    glPopMatrix();
     
 	assert(mp_explosion_manager != NULL);
 	mp_explosion_manager->draw(camera_forward, camera_up);
@@ -111,6 +122,23 @@ void World :: init ()
             moons[i].initPlanetoid(m_id, moonInfo[i].position, moonInfo[i].radius, m_dl, 1.f);
         }
         
+        // Ring init
+        RingParticle::load();
+        g_rings.init(RING_HALF_THICKNESS,
+                     RING_INNER_RADIUS,
+                     RING_OUTER_RADIUS_BASE,
+                     RING_DENSITY_MAX,
+                     RING_DENSITY_FACTOR);
+        
+        for(unsigned int i = 0; i < MOON_COUNT; i++)
+        {
+            g_rings.addHole(moons[i].getPosition(),
+                            moons[i].getRadius() + RING_MOON_PADDING);
+        }
+        ObjModel r;
+        r.load("Models/Ring.obj");
+        ring_list = r.getDisplayList();
+        
         // Ship Init
         ObjModel s;
         s.load("Models/Grapple.obj");
@@ -132,20 +160,27 @@ void World :: init ()
             ships[i].setSpeed(0.f);
         }
         
-        // Add Bullets
+        // Player Ship Init
+        PhysicsObjectId ps_id = PhysicsObjectId(PhysicsObjectId::TYPE_SHIP,
+                                                PhysicsObjectId::FLEET_PLAYER,
+                                                0);
+        Vector3 pos = Vector3(0.f, 15000.f, 140000.f);
+        player_ship.initPhysics(ps_id, pos, 10.f, Vector3::getRandomUnitVector(), s_dl, 1.f);
+        player_ship.setHealth(10);
+        player_ship.setAmmo(8);
+        player_ship.setSpeed(250.f);
+        
+        //Bullet init
         ObjModel b;
         b.load("Models/Bolt.obj");
         DisplayList b_dl = b.getDisplayList();
         for (int i = 0; i < BULLET_COUNT; i++)
         {
-            PhysicsObjectId b_id = PhysicsObjectId(PhysicsObjectId::TYPE_BULLET,
-                                                   PhysicsObjectId::FLEET_MAX,
-                                                   i);
-            bullets[i].initPhysics(b_id, {0, 0, 0}, 1.f, {0, 0, 0}, b_dl, 2.5f);
+            bullets[i].initPhysics(PhysicsObjectId::TYPE_BULLET, {0, 0, 0}, 10.f, {0, 0, 0}, b_dl, 1.f);
         }
 
 		assert(mp_explosion_manager != NULL);
-		mp_explosion_manager->init("Explode1.png", 15);
+		mp_explosion_manager->init(EXPLOSION_FILENAME.c_str(), 15);
 	}
 
 	assert(invariant());
@@ -164,454 +199,23 @@ void World :: reset ()
 void World :: updateAll ()
 {
 	assert(isInitialized());
+    
+    player_ship.update(*this);
+    for (int i = 0; i < SHIP_COUNT; i++)
+    {
+        ships[i].update(*this);
+    }
+    for (int i = 0; i < BULLET_COUNT; i++)
+    {
+        bullets[i].update(*this);
+    }
+    handleCollisions();
 
 	assert(mp_explosion_manager != NULL);
 	mp_explosion_manager->update();
 
 	assert(invariant());
 }
-
-
-
-///////////////////////////////////////////////////////////////
-//
-//  Virtual functions inherited from WorldInterface
-//
-
-double World :: getRingDensity (const Vector3& position) const
-{
-    
-	cout << "Error: World::getRingDensity is not implemented" << endl;
-    return 0.0f;
-}
-
-vector<WorldInterface::RingParticleData> World :: getRingParticles (const Vector3& sphere_center,
-                                                                    double sphere_radius) const
-{
-	cout << "Error: World::getRingParticles is not implemented" << endl;
-	assert(sphere_radius >= 0.0);
-
-	return vector<RingParticleData>();
-}
-
-unsigned int World :: getFleetCount () const
-{
-	cout << "Error: World::getFleetCount is not implemented" << endl;
-	return 0;
-}
-
-float World :: getFleetScore (unsigned int fleet) const
-{
-	cout << "Error: World::getFleetScore is not implemented" << endl;
-	assert(fleet <  getFleetCount());
-	assert(fleet != PhysicsObjectId::FLEET_NATURE);
-
-	return 0;
-}
-
-bool World :: isFleetAlive (unsigned int fleet) const
-{
-	cout << "Error: World::isFleetAlive is not implemented" << endl;
-	assert(fleet <  getFleetCount());
-	assert(fleet != PhysicsObjectId::FLEET_NATURE);
-
-	return false;
-}
-
-PhysicsObjectId World :: getFleetCommandShipId (unsigned int fleet) const
-{
-	cout << "Error: World::getFleetCommandShipId is not implemented" << endl;
-	assert(fleet <  getFleetCount());
-	assert(fleet != PhysicsObjectId::FLEET_NATURE);
-
-	return PhysicsObjectId::ID_NOTHING;
-}
-
-vector<PhysicsObjectId> World :: getFleetFighterIds (unsigned int fleet) const
-{
-	cout << "Error: World::getFleetFighterIds is not implemented" << endl;
-	assert(fleet <  getFleetCount());
-	assert(fleet != PhysicsObjectId::FLEET_NATURE);
-
-	return vector<PhysicsObjectId>();
-}
-
-vector<PhysicsObjectId> World :: getFleetMissileIds (unsigned int fleet) const
-{
-	cout << "Error: World::getFleetMissileIds is not implemented" << endl;
-	assert(fleet <  getFleetCount());
-	assert(fleet != PhysicsObjectId::FLEET_NATURE);
-
-	return vector<PhysicsObjectId>();
-}
-
-PhysicsObjectId World :: getPlanetId () const
-{
-	//cout << "Error: World::getPlanetId is not implemented" << endl;
-	//return PhysicsObjectId::ID_NOTHING;
-    
-    return planet.getId();
-}
-
-unsigned int World :: getMoonCount () const
-{
-	//cout << "Error: World::getMoonCount is not implemented" << endl;
-	//return 0;
-    
-    return MOON_COUNT;
-}
-
-PhysicsObjectId World :: getMoonId (unsigned int moon) const
-{
-	//cout << "Error: World::getMoonId is not implemented" << endl;
-	assert(moon < getMoonCount());
-	//return PhysicsObjectId::ID_NOTHING;
-    
-    return moons[moon].getId();
-}
-
-PhysicsObjectId World :: getNearestPlanetoidId (const Vector3& position) const
-{
-	//cout << "Error: World::getPlanetId is not implemented" << endl;
-	//return PhysicsObjectId::ID_NOTHING;
-    
-    int index = 0;
-    double min_distance = position.getDistance(moons[0].getPosition());
-    for (int i = 1; i < MOON_COUNT; i++)
-    {
-        double temp = position.getDistance(moons[i].getPosition());
-        if (temp < min_distance)
-        {
-            index = i;
-            temp = min_distance;
-        }
-    }
-    return PhysicsObjectId::ID_NOTHING;
-}
-
-vector<PhysicsObjectId> World :: getShipIds (const Vector3& sphere_center,
-                                                       double sphere_radius) const
-{
-	cout << "Error: World::getShipIds is not implemented" << endl;
-	assert(sphere_radius >= 0.0);
-
-	return vector<PhysicsObjectId>();
-}
-
-bool World :: isAlive (const PhysicsObjectId& id) const
-{
-	//cout << "Error: World::isAlive is not implemented" << endl;
-	//return false;
-    
-    if (planet.getId() == id) planet.isAlive();
-    for (int i = 0; i < MOON_COUNT; i++)
-    {
-        if (moons[i].getId() == id) moons[i].isAlive();
-    }
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) ships[i].isAlive();
-    }
-    if (player_ship.getId() == id) player_ship.isAlive();
-    
-    // TODO: Add Bullets
-    
-    return false;
-}
-
-Vector3 World :: getPosition (const PhysicsObjectId& id) const
-{
-	assert(isAlive(id));
-    
-    if (planet.getId() == id) planet.getPosition();
-    for (int i = 0; i < MOON_COUNT; i++)
-    {
-        if (moons[i].getId() == id) moons[i].getPosition();
-    }
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) ships[i].getPosition();
-    }
-    if (player_ship.getId() == id) player_ship.getPosition();
-    
-    // TODO: Add Bullets
-    
-    return Vector3::ZERO;
-}
-
-double World :: getRadius (const PhysicsObjectId& id) const
-{
-	assert(isAlive(id));
-    
-    if (planet.getId() == id) planet.getRadius();
-    for (int i = 0; i < MOON_COUNT; i++)
-    {
-        if (moons[i].getId() == id) moons[i].getRadius();
-    }
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) ships[i].getRadius();
-    }
-    if (player_ship.getId() == id) player_ship.getRadius();
-    
-    // TODO: Add Bullets
-    
-    return 0.0;
-}
-
-Vector3 World :: getVelocity (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::getVelocity is not implemented" << endl;
-	assert(isAlive(id));
-    
-    if (planet.getId() == id) planet.getVelocity();
-    for (int i = 0; i < MOON_COUNT; i++)
-    {
-        if (moons[i].getId() == id) moons[i].getVelocity();
-    }
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) ships[i].getVelocity();
-    }
-    if (player_ship.getId() == id) player_ship.getVelocity();
-    
-    // TODO: Add Bullets
-
-
-	return Vector3::ZERO;
-}
-
-double World :: getSpeed (const PhysicsObjectId& id) const
-{
-	assert(isAlive(id));
-    
-    if (planet.getId() == id) planet.getSpeed();
-    for (int i = 0; i < MOON_COUNT; i++)
-    {
-        if (moons[i].getId() == id) moons[i].getSpeed();
-    }
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) ships[i].getSpeed();
-    }
-    if (player_ship.getId() == id) player_ship.getSpeed();
-    
-    // TODO: Add Bullets
-
-
-	return 0.0;
-}
-
-Vector3 World :: getForward (const PhysicsObjectId& id) const
-{
-	assert(isAlive(id));
-    
-    if (planet.getId() == id) planet.getForward();
-    for (int i = 0; i < MOON_COUNT; i++)
-    {
-        if (moons[i].getId() == id) moons[i].getForward();
-    }
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) ships[i].getForward();
-    }
-    if (player_ship.getId() == id) player_ship.getForward();
-    
-    // TODO: Add Bullets
-
-	return Vector3::UNIT_X_PLUS;
-}
-
-Vector3 World :: getUp (const PhysicsObjectId& id) const
-{
-	assert(isAlive(id));
-    
-    if (planet.getId() == id) planet.getUp();
-    for (int i = 0; i < MOON_COUNT; i++)
-    {
-        if (moons[i].getId() == id) moons[i].getUp();
-    }
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) ships[i].getUp();
-    }
-    if (player_ship.getId() == id) player_ship.getUp();
-    
-    // TODO: Add Bullets
-
-
-	return Vector3::UNIT_Y_PLUS;
-}
-
-Vector3 World :: getRight (const PhysicsObjectId& id) const
-{
-	assert(isAlive(id));
-    
-    if (planet.getId() == id) planet.getRight();
-    for (int i = 0; i < MOON_COUNT; i++)
-    {
-        if (moons[i].getId() == id) moons[i].getRight();
-    }
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) ships[i].getRight();
-    }
-    if (player_ship.getId() == id) player_ship.getRight();
-    
-    // TODO: Add Bullets
-
-
-	return Vector3::UNIT_Z_PLUS;
-}
-
-bool World :: isPlanetoidMoon (const PhysicsObjectId& id) const
-{
-	assert(id.m_type == PhysicsObjectId::TYPE_PLANETOID);
-	assert(isAlive(id));
-    
-    return (getPlanetId() == id);
-}
-
-double World :: getPlanetoidRingDistance (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::getPlanetoidRingDistance is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_PLANETOID);
-	assert(isAlive(id));
-	assert(isPlanetoidMoon(id));
-
-	return 0.0;
-}
-
-unsigned int World :: getPlanetoidOwner (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::getPlanetoidOwner is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_PLANETOID);
-	assert(isAlive(id));
-
-	return PhysicsObjectId::FLEET_NATURE;
-}
-
-bool World :: isPlanetoidActivelyClaimed (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::isPlanetoidActivelyClaimed is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_PLANETOID);
-	assert(isAlive(id));
-
-	return false;
-}
-
-bool World :: isShipCommandShip (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::isShipCommand is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_SHIP);
-	assert(isAlive(id));
-
-	return false;
-}
-
-double World :: getShipSpeedMax (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::getShipSpeedMax is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_SHIP);
-	assert(isAlive(id));
-
-	return 1.0;
-}
-
-double World :: getShipAcceleration (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::getShipAcceleration is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_SHIP);
-	assert(isAlive(id));
-
-	return 0.0;
-}
-
-double World :: getShipRotationRate (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::getShipRotationRate is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_SHIP);
-	assert(isAlive(id));
-
-	return 0.0;
-}
-
-float World :: getShipHealthCurrent (const PhysicsObjectId& id) const
-{
-	assert(id.m_type == PhysicsObjectId::TYPE_SHIP);
-	assert(isAlive(id));
-    
-    for (int i = 0; i < SHIP_COUNT; i++)
-    {
-        if (ships[i].getId() == id) return ships[i].getHealth();
-    }
-    return 0.0;
-}
-
-float World :: getShipHealthMaximum (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::getShipHealthMaximum is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_SHIP);
-	assert(isAlive(id));
-
-	return 1.0f;
-}
-
-bool World :: isMissileOutOfFuel (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::isMissileOutOfFuel is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_MISSILE);
-	assert(isAlive(id));
-
-	return 0.0f;
-}
-
-PhysicsObjectId World :: getMissileTarget (const PhysicsObjectId& id) const
-{
-	cout << "Error: World::getMissileTarget is not implemented" << endl;
-	assert(id.m_type == PhysicsObjectId::TYPE_MISSILE);
-	assert(isAlive(id));
-
-	return PhysicsObjectId::ID_NOTHING;
-}
-
-
-
-void World :: addExplosion (const Vector3& position,
-                                      double size,
-                                      unsigned int type)
-{
-	assert(size >= 0.0);
-
-	mp_explosion_manager->add(position, size);
-
-	assert(invariant());
-}
-
-PhysicsObjectId World :: addBullet (const Vector3& position,
-                                              const Vector3& forward,
-                                              const PhysicsObjectId& source_id)
-{
-	cout << "Error: World::addBullet is not implemented" << endl;
-	assert(forward.isNormal());
-
-	assert(invariant());
-	return PhysicsObjectId::ID_NOTHING;
-}
-
-PhysicsObjectId World :: addMissile (const Vector3& position,
-                                               const Vector3& forward,
-                                               const PhysicsObjectId& source_id,
-                                               const PhysicsObjectId& target_id)
-{
-	cout << "Error: World::addMissile is not implemented" << endl;
-	assert(forward.isNormal());
-
-	assert(invariant());
-	return PhysicsObjectId::ID_NOTHING;
-}
-
-
 
 ///////////////////////////////////////////////////////////////
 //
@@ -622,4 +226,126 @@ bool World :: invariant () const
 {
 	if(mp_explosion_manager == NULL) return false;
 	return true;
+}
+
+void World::handleCollisions()
+{
+    handleShipCollisions(player_ship);
+    
+    for (int i = 0; i < SHIP_COUNT; i++)
+    {
+        if (ships[i].isDying() || !ships[i].isAlive()) continue;
+        handleShipCollisions(ships[i]);
+    }
+    
+    for (int i = 0; i < BULLET_COUNT; i++)
+    {
+        if (!bullets[i].isAlive()) continue;
+        handleBulletCollisions(bullets[i]);
+    }
+}
+
+void World::handleShipCollisions(Ship& ship)
+{
+    // Ring Particles
+    if (g_rings.handleRingParticleCollision(ship.getPosition(), ship.getRadius()))
+    {
+        resolvePlanetoidCollision(ship);
+    }
+    
+    // Planetoids
+    if (GeometricCollisions::sphereVsSphere(ship.getPosition(),
+                                            ship.getRadius(),
+                                            planet.getPosition(),
+                                            planet.getRadius()))
+    {
+        resolvePlanetoidCollision(ship);
+    }
+    
+    for (int j = 0; j < MOON_COUNT; j++)
+    {
+        if (GeometricCollisions::sphereVsSphere(ship.getPosition(),
+                                                ship.getRadius(),
+                                                moons[j].getPosition(),
+                                                moons[j].getRadius()))
+        {
+            resolvePlanetoidCollision(ship);
+        }
+    }
+    
+    // Ships
+    for (int j = 0; j < SHIP_COUNT; j++)
+    {
+        if (ship.getId() <= ships[j].getId()) continue;
+        if (ships[j].isDying() || !ships[j].isAlive()) continue;
+        if (GeometricCollisions::sphereVsSphere(ship.getPosition(),
+                                                ship.getRadius(),
+                                                ships[j].getPosition(),
+                                                ships[j].getRadius()))
+        {
+            resolveShipCollision(ship, ships[j]);
+        }
+    }
+}
+
+void World::handleBulletCollisions(Bullet& bullet)
+{
+    // Ring Particles
+    if (g_rings.handleRingParticleCollision(bullet.getPosition(), 0.0f))
+    {
+        resolvePlanetoidCollision(bullet);
+    }
+    
+    // Planetoids
+    if (GeometricCollisions::sphereVsSphere(bullet.getPosition(),
+                                            0.0f,
+                                            planet.getPosition(),
+                                            planet.getRadius()))
+    {
+        resolvePlanetoidCollision(bullet);
+    }
+    
+    for (int j = 0; j < MOON_COUNT; j++)
+    {
+        if (GeometricCollisions::sphereVsSphere(bullet.getPosition(),
+                                                0.0f,
+                                                moons[j].getPosition(),
+                                                moons[j].getRadius()))
+        {
+            resolvePlanetoidCollision(bullet);
+        }
+    }
+    
+    // Ships
+    for (int j = 0; j < SHIP_COUNT; j++)
+    {
+        if (ships[j].isDying() || !ships[j].isAlive()) break;
+        if (GeometricCollisions::sphereVsSphere(bullet.getPosition(),
+                                                0.0f,
+                                                ships[j].getPosition(),
+                                                ships[j].getRadius()))
+        {
+            resolveBulletCollision(bullet, ships[j]);
+        }
+    }
+    
+}
+
+void World::resolvePlanetoidCollision(PhysicsObject& obj)
+{
+    obj.markDead(false);
+}
+
+void World::resolveShipCollision(Ship& obj1, Ship& obj2)
+{
+    if (obj1.getId() == obj2.getId()) return;
+    
+    obj1.markDead(false);
+    obj2.markDead(false);
+}
+
+void World::resolveBulletCollision(Bullet& b, Ship& obj)
+{
+    b.markDead(false);
+    obj.addHealth(-1.0f);
 }

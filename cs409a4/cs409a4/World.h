@@ -1,16 +1,6 @@
 //
 //  World.h
 //
-///////////////////////////////////////////////////////////////
-//
-//  NOTE TO MARKER:
-//  I was attempting to implement the WorldInterface for this
-//  assignment, but I ran out of time.  I've included this file
-//  just for the sake of having it.  It is not used in the
-//  program to draw the world (See World_old.h instead)
-//
-///////////////////////////////////////////////////////////////
-//
 
 #ifndef WORLD_H
 #define WORLD_H
@@ -19,7 +9,9 @@
 
 #include "ExplosionManagerInterface.h"
 #include "WorldInterface.h"
+#include "GeometricCollisions.h"
 #include "Planetoid.h"
+#include "RingSystem.h"
 #include "Ship.h"
 #include "Bullet.h"
 
@@ -82,15 +74,33 @@ private:
     objInfo ringInfo = {
         "Models/Ring.obj", 60000.f, {0.0f, 0.f, 0.0f}
     };
+
+    // So explosions look nice on Windows
+#ifdef _WIN32
+    const std::string EXPLOSION_FILENAME = "Explode1.png";
+#else
+    const std::string EXPLOSION_FILENAME = "Explode1.bmp";
+#endif
+    
+    const double RING_MOON_PADDING      =   2.0e3;
+    const double RING_HALF_THICKNESS    =  12.0e3;
+    const double RING_INNER_RADIUS      =  75.0e3;
+    const double RING_OUTER_RADIUS_BASE = 150.0e3;
+    const double RING_DENSITY_MAX       = 6.0;
+    const double RING_DENSITY_FACTOR    = 0.0002;
+    
+public:
+    Ship player_ship;
     
 private:
     DisplayList skybox;
+    DisplayList ring_list;
     Planetoid planet;
     Planetoid moons[MOON_COUNT];
+    RingSystem g_rings;
     Ship ships[SHIP_COUNT];
-    Ship player_ship;
     Bullet bullets[BULLET_COUNT];
-    
+    int nextBullet = 0;
     
 public:
 //
@@ -229,6 +239,7 @@ public:
 ///////////////////////////////////////////////////////////////
 //
 //  Virtual functions inherited from WorldInterface
+//  Implemented in World2.h
 //
 
 //
@@ -936,6 +947,13 @@ private:
 
 private:
 	ExplosionManagerInterface* mp_explosion_manager;
+    
+    void handleCollisions();
+    void handleShipCollisions(Ship& ship);
+    void handleBulletCollisions(Bullet& bullet);
+    void resolvePlanetoidCollision(PhysicsObject& obj);
+    void resolveShipCollision(Ship& obj1, Ship& obj2);
+    void resolveBulletCollision(Bullet& b, Ship& obj);
 };
 
 

@@ -12,6 +12,7 @@
 #include "../../ObjLibrary/DisplayList.h"
 #include "PhysicsObjectId.h"
 #include "CoordinateSystem.h"
+#include "TimeSystem.h"
 
 class DisplayList;
 class WorldInterface;

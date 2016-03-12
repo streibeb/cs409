@@ -17,10 +17,43 @@ class DisplayList;
 class WorldInterface;
 struct PhysicsObjectId;
 
+namespace
+{
+    const double CAMERA_FORWARD_DISTANCE = -100.0;
+    const double CAMERA_UP_DISTANCE      =   20.0;
+}
+
 class Ship : public PhysicsObject
 {
-private:
-    const float RELOAD_TIME = 0.25;
+public:
+    //
+    //  RADUIS
+    //
+    //  The default radius of the sphere used to represent a Ship
+    //    for collision checking.
+    //
+    
+    static const double RADIUS;
+    
+    //
+    //  HEALTH_DEAD_AT
+    //
+    //  A constant indicating the health value at or below which a
+    //    Ship is considered to be dead.  This value is slightly
+    //    more than 0.0, and is used to avoid the effects of
+    //    floating-point rounding errors.
+    //
+    
+    static const float HEALTH_DEAD_AT;
+    
+    //
+    //  RELOAD_TIME
+    //
+    //  The time it takes for the weapons on a Ship to reload after
+    //    firing.
+    //
+    
+    static const float RELOAD_TIME;
     
 private:
     CoordinateSystem camera;
@@ -90,7 +123,7 @@ public:
     //               as the ship
     //
     
-    void setupCamera();
+    void setupCamera() const;
     
     //
     //  getCameraCoordinateSystem
@@ -118,6 +151,19 @@ public:
     //
     
     void setHealth(float health);
+    
+    //
+    //  addHealth
+    //
+    //  Purpose: To add to this ship's health
+    //  Parameter(s):
+    //    <1> increase: The amount of ammo to add
+    //  Precondition(s): N/A
+    //  Returns: N/A
+    //  Side Effect: This ship's health is increased by increase
+    //
+    
+    void addHealth(float increase);
     
     //
     //  markReloading

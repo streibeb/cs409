@@ -8,12 +8,16 @@
 
 #include "Ship.h"
 
-Ship::Ship() : PhysicsObject()
+const double Ship :: RADIUS         = 10.0;
+const float  Ship :: HEALTH_DEAD_AT =  0.001f;
+const float  Ship :: RELOAD_TIME    =  0.25f;
+
+Ship::Ship() : PhysicsObject(RADIUS)
 {
     reloading = false;
 }
 
-Ship::Ship(int health, int ammo) : PhysicsObject()
+Ship::Ship(int health, int ammo) : PhysicsObject(RADIUS)
 {
     this->health = health;
     this->ammoCount = ammo;
@@ -60,22 +64,29 @@ int Ship::getAmmo() const
     return ammoCount;
 }
 
-void Ship::setupCamera()
+void Ship::setupCamera() const
 {
-    Vector3 p = getPosition();
-    Vector3 f = getForward();
-    Vector3 u = getUp();
-    Vector3 position = p - 75*f + 15*u;
+    CoordinateSystem camera = getCameraCoordinateSystem();
+    const Vector3& camera_position = camera.getPosition();
+    const Vector3& camera_up       = camera.getUp();
     
-    camera.setPosition(position);
-    gluLookAt(position.x, position.y, position.z,
-              p.x,      p.y,      p.z,
-              u.x,      u.y,      u.z);
+    Vector3 look_at = camera_position + camera.getForward();
+    
+    gluLookAt(camera_position.x, camera_position.y, camera_position.z,
+              look_at.x,         look_at.y,         look_at.z,
+              camera_up.x,       camera_up.y,       camera_up.z);
 }
 
 CoordinateSystem Ship::getCameraCoordinateSystem() const
 {
-    return camera;
+    const Vector3& forward = getForward();
+    const Vector3& up      = getUp();
+    
+    Vector3 camera_at = getPosition() +
+    forward * CAMERA_FORWARD_DISTANCE +
+    up      * CAMERA_UP_DISTANCE;
+    
+    return CoordinateSystem(camera_at, forward, up);
 }
 
 void Ship::setHealth(float health)
@@ -85,6 +96,11 @@ void Ship::setHealth(float health)
         alive = true;
     }
     this->health = health;
+}
+
+void Ship::addHealth(float increase)
+{
+    this->health += increase;
 }
 
 void Ship::markReloading()
