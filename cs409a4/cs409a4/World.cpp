@@ -276,7 +276,7 @@ void World::handleShipCollisions(Ship& ship)
     // Ships
     for (int j = 0; j < SHIP_COUNT; j++)
     {
-        if (ship.getId() <= ships[j].getId()) continue;
+        if (ship.getId() >= ships[j].getId()) continue;
         if (ships[j].isDying() || !ships[j].isAlive()) continue;
         if (GeometricCollisions::sphereVsSphere(ship.getPosition(),
                                                 ship.getRadius(),
