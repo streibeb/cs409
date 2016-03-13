@@ -65,21 +65,33 @@ void World :: draw (const Vector3& camera_forward,
 	assert(camera_up.isNormal());
 	assert(camera_forward.isOrthogonal(camera_up));
     
+    // Draw saturn
     planet.draw();
+    
+    // Draw moons
     for (int i = 0; i < MOON_COUNT; i++)
     {
         moons[i].draw();
     }
+    
+    // draw player ship
+    player_ship.draw();
+    
+    // Draw ring particles
     g_rings.draw(player_ship.getCameraCoordinateSystem());
+    
+    // Draw NPC ships
     for (int i = 0; i < SHIP_COUNT; i++)
     {
         if (ships[i].isAlive()) ships[i].draw();
     }
+    // Draw bullets
     for (int i = 0; i < BULLET_COUNT; i++)
     {
         if (bullets[i].isAlive()) bullets[i].draw();
     }
     
+    // Draw ring
     glPushMatrix();
         glTranslatef(ringInfo.position.x, ringInfo.position.y, ringInfo.position.z);
         glScalef(ringInfo.radius, ringInfo.radius, ringInfo.radius);
@@ -164,7 +176,7 @@ void World :: init ()
         PhysicsObjectId ps_id = PhysicsObjectId(PhysicsObjectId::TYPE_SHIP,
                                                 PhysicsObjectId::FLEET_PLAYER,
                                                 0);
-        Vector3 pos = Vector3(0.f, 15000.f, 140000.f);
+        Vector3 pos = moons[0].getPosition() + Vector3(0.f, 15000.f, 0.f);
         player_ship.initPhysics(ps_id, pos, 10.f, Vector3::getRandomUnitVector(), s_dl, 1.f);
         player_ship.setHealth(10);
         player_ship.setAmmo(8);
@@ -319,7 +331,7 @@ void World::handleBulletCollisions(Bullet& bullet)
     // Ships
     for (int j = 0; j < SHIP_COUNT; j++)
     {
-        if (ships[j].isDying() || !ships[j].isAlive()) break;
+        if (ships[j].isDying() || !ships[j].isAlive()) continue;
         if (GeometricCollisions::sphereVsSphere(bullet.getPosition(),
                                                 0.0f,
                                                 ships[j].getPosition(),

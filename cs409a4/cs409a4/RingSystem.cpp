@@ -308,24 +308,23 @@ RingSector RingSystem :: getRingSector (const RingSectorIndex& index) const
 
 bool RingSystem::handleRingParticleCollision(const Vector3& sphere_centre, double sphere_radius)
 {
-    double largeRadius = 1;//sphere_radius + RingParticle::RADIUS_MAX;
     RingSectorIndex centre(sphere_centre);
     
     for(int dx = -1; dx <= 1; dx++)
     {
-        short x = (centre.getX() + (dx * largeRadius));
+        short x = (centre.getX() + dx);
         for(int dy = -1; dy <= 1; dy++)
         {
-            short y = (centre.getY() + (dy * largeRadius));
+            short y = (centre.getY() + dy);
             for(int dz = -1; dz <= 1; dz++)
             {
-                short z = (centre.getZ() + (dz * largeRadius));
+                short z = (centre.getZ() + dz);
                 
                 RingSectorIndex index(x, y, z);
                 const RingSector& ring_sector = getRingSector(index);
                 
-                if (GeometricCollisions::sphereVsCuboid(sphere_centre,
-                                                        largeRadius,
+                if (!GeometricCollisions::sphereVsCuboid(sphere_centre,
+                                                        sphere_radius,
                                                         index.getCenter(),
                                                         RING_SECTOR_HALF_SIZE))
                 {

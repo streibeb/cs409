@@ -948,11 +948,91 @@ private:
 private:
 	ExplosionManagerInterface* mp_explosion_manager;
     
+//
+//  handleCollisions
+//
+//  Purpose: A function which handles all collisions
+//  Parameter(s): N/A
+//  Precondition(s): N/A
+//  Returns: N/A
+//  Side Effect: N/A
+//
+
     void handleCollisions();
+
+//
+//  handleShipCollisions
+//
+//  Purpose: A function which handles all collisions for ships
+//  Parameter(s):
+//    <1> ship: The ship we are testing collisions against
+//  Precondition(s): N/A
+//  Returns: N/A
+//  Side Effect: Identifies whether a collision has occurred
+//               for the given ship and calls the appropriate
+//               resolution function.
+//
+    
     void handleShipCollisions(Ship& ship);
+
+//
+//  handleBulletCollisions
+//
+//  Purpose: A function which handles all collisions for bullets
+//  Parameter(s):
+//    <1> bullet: The bullet we are testing collisions against
+//  Precondition(s): N/A
+//  Returns: N/A
+//  Side Effect: Identifies whether a collision has occurred
+//               for the given bullet and calls the appropriate
+//               resolution function.
+//
+
     void handleBulletCollisions(Bullet& bullet);
+
+//
+//  resolvePlanetoidCollision
+//
+//  Purpose: A function which resolves a collision between a
+//           PhysicsObject and a Planetoid
+//  Parameter(s):
+//    <1> obj: The PhysicsObject which collided with a Planetoid
+//  Precondition(s): N/A
+//  Returns: N/A
+//  Side Effect: Marks the PhysicsObject as "dying"
+//
+    
     void resolvePlanetoidCollision(PhysicsObject& obj);
+
+//
+//  resolveShipCollision
+//
+//  Purpose: A function which resolves a collision between two
+//           Ships
+//  Parameter(s):
+//    <1> obj1: One of the ships involved in the collision
+//    <2> obj2: The other ship involved in the collision
+//  Precondition(s): N/A
+//  Returns: N/A
+//  Side Effect: Marks both ships as dying
+//
+
     void resolveShipCollision(Ship& obj1, Ship& obj2);
+
+//
+//  resolveBulletCollision
+//
+//  Purpose: A function which resolves a collision between a
+//           bullet and a ship
+//  Parameter(s):
+//    <1> b: The bullet involved in the collision
+//    <2> obj: The ship involved in the collision
+//  Precondition(s): N/A
+//  Returns: N/A
+//  Side Effect: Marks the bullet as dying and subtract 1
+//               from the ship's health
+//
+    
     void resolveBulletCollision(Bullet& b, Ship& obj);
 };
 

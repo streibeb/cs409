@@ -181,8 +181,7 @@ void display()
     world.player_ship.setupCamera();
     CoordinateSystem camera = world.player_ship.getCameraCoordinateSystem();
     
-    // Draw player ship
-    world.player_ship.draw();
+    // Draw world
     world.draw(camera.getForward(), camera.getUp());
     
 	// send the current image to the screen - any drawing after here will not display

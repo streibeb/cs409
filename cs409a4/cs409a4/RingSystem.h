@@ -252,7 +252,20 @@ public:
 
 	void removeAllHoles ();
     
-// TODO: Comment
+//
+//  handleRingParticleCollisions
+//
+//  Purpose: A function which handles all collisions with a given
+//           sphere and a RingParticle
+//  Parameter(s):
+//    <1> sphere_centre: Centre of the object we are testing collisions
+//                       against
+//    <2> sphere_radius: Radius of the object we are testing collisions
+//                       against
+//  Precondition(s): N/A
+//  Returns: Whether a collision has occurred with the given sphere
+//  Side Effect: N/A
+//
     bool handleRingParticleCollision(
                 const Vector3& sphere_centre, double sphere_radius);
     

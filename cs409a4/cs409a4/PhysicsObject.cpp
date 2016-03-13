@@ -143,6 +143,7 @@ bool PhysicsObject::isDisplayListSet () const
 
 void PhysicsObject::draw () const
 {
+    if (!isAlive()) return;
     glPushMatrix();
         coordinateSystem.applyTransformation();
         glScalef(radius, radius, radius);
@@ -157,7 +158,6 @@ void PhysicsObject::initPhysics (const PhysicsObjectId& id,
                                  const DisplayList& display_list,
                                  double display_scale)
 {
-    // Fix orientation issue here
     this->id = id;
     coordinateSystem.setPosition(position);
     this->radius = radius;
