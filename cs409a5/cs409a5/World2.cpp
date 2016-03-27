@@ -24,7 +24,7 @@ using namespace std;
 
 double World :: getRingDensity (const Vector3& position) const
 {
-    return g_rings.getDensityAtPosition(position);;
+    return g_rings.getDensityAtPosition(position);
 }
 
 vector<RingParticleData> World :: getRingParticles (const Vector3& sphere_center,

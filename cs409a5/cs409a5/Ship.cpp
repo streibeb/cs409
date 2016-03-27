@@ -263,6 +263,12 @@ void Ship :: update (WorldInterface& r_world)
     {
         if (!desired_velocity.isZero())
         {
+            double theta = max_rotation_rate * TimeSystem::getFrameDuration();
+            if(theta > 0.0)
+            {
+                rotateTowards(desired_velocity.getNormalized(), theta);
+            }
+            
             rotateTowards(desired_velocity, max_rotation_rate);
             double delta = max_acceleration * TimeSystem::getFrameDuration();
             if(delta > 0.0)
@@ -368,9 +374,7 @@ void Ship::markFireMissileDesired (const PhysicsObjectId& id_target)
 
 void Ship::runAi (const WorldInterface& world)
 {
-    assert (isUnitAiSet());
-    
-    unitAi->run(world);
+    if (isUnitAiSet()) unitAi->run(world);
 }
 
 void Ship::setUnitAi (UnitAiSuperclass* p_unit_ai)

@@ -40,17 +40,19 @@ namespace SpaceMongols
     
     const double VERY_LARGE_ANGLE               = 1.0e6;
     
-    const double SHIP_CLEARANCE                 = 100.0;
-    const double SHIP_AVOID_DISTANCE            = 500.0;
+    const double SCAN_DISTANCE_SHIP             = 2500.0;
+    const double SCAN_DISTANCE_RING_PARTICLE    = 500.0;
+    
+    const double SHIP_CLEARANCE                 = 50.0;
+    const double SHIP_AVOID_DISTANCE            = 200.0;
     const double RING_PARTICLE_CLEARANCE        = 100.0;
     const double RING_PARTICLE_AVOID_DISTANCE   = 500.0;
     const double PLANETOID_CLEARANCE            = 100.0;
-    const double PLANETOID_AVOID_DISTANCE       = 500.0;
+    const double PLANETOID_AVOID_DISTANCE       = 1000.0;
     
     const double SHOOT_ANGLE_RADIANS_MAX        = 0.1;
     
     const unsigned int SCAN_COUNT_MAX           = 5;
-    const double SCAN_DISTANCE                  = 2500.0;
 
     
     class UnitAiMoonGuard : public UnitAiSuperclass
@@ -62,7 +64,7 @@ namespace SpaceMongols
         std::vector<RingParticleData> nearbyRingParticles;
         PhysicsObjectId nearestPlanetoid;
         PhysicsObjectId nearestShip;
-        int pingTimer;
+        int scanCount;
         
     public:
         //
@@ -209,6 +211,8 @@ namespace SpaceMongols
         PhysicsObjectId getClosestShip(const WorldInterface& world);
         void shootAtShip(const WorldInterface& world,
                          const PhysicsObjectId& target);
+        Vector3 steerToRamTarget(const WorldInterface& world,
+                                 const PhysicsObjectId& target);
         Vector3 avoidShips(const WorldInterface& world);
         Vector3 avoidPlanetoids(const WorldInterface& world);
         Vector3 avoidRingParticles(const WorldInterface& world);

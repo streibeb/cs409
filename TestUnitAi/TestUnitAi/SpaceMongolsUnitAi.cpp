@@ -31,7 +31,7 @@ UnitAiMoonGuard :: UnitAiMoonGuard (const AiShipReference& ship,
 
     steeringBehaviour = new FleetName::SteeringBehaviour(ship.getId());
     moon = id_moon;
-    pingTimer = rand() % SCAN_COUNT_MAX;
+    scanCount = rand() % SCAN_COUNT_MAX;
     
 }
 
@@ -43,7 +43,7 @@ UnitAiMoonGuard :: UnitAiMoonGuard (const UnitAiMoonGuard& original,
 
     steeringBehaviour = new FleetName::SteeringBehaviour(ship.getId());
     moon = original.moon;
-    pingTimer = rand() % SCAN_COUNT_MAX;
+    scanCount = rand() % SCAN_COUNT_MAX;
 }
 
 UnitAiMoonGuard :: ~UnitAiMoonGuard ()
@@ -78,42 +78,53 @@ void UnitAiMoonGuard :: run (const WorldInterface& world)
 {
 	assert(world.isAlive(getShipId()));
 
+    Vector3 v = getShip().getVelocity();
+    
     scan(world);
     
-    if (nearbyShips.size() > 0)
+    nearestShip = getClosestShip(world);
+    if (nearestShip != PhysicsObjectId::ID_NOTHING)
     {
-        nearestShip = getClosestShip(world);
+        v = steerToRamTarget(world, nearestShip);
         shootAtShip(world, nearestShip);
     }
+    else if (nearbyRingParticles.size() > 0)
+    {
+        v = avoidRingParticles(world);
+    }
+    else if (false)
+    {
+        v = avoidPlanetoids(world);
+    }
+    else
+    {
+        Vector3 moon_pos = world.getPosition(moon);
+        double moon_radius = world.getRadius(moon);
+        v = steeringBehaviour->patrolSphere(world,
+                                            moon_pos,
+                                            moon_radius,
+                                            PLANETOID_AVOID_DISTANCE);
+    }
     
-    avoidRingParticles(world);
-    avoidShips(world);
-    avoidPlanetoids(world);
-    
-    Vector3 moon_pos = world.getPosition(moon);
-    double moon_radius = world.getRadius(moon);
-    Vector3 v = steeringBehaviour->patrolSphere(world,
-                                                moon_pos,
-                                                moon_radius * 1.5,
-                                                PLANETOID_AVOID_DISTANCE);
     getShipAi().setDesiredVelocity(v);
 }
 
 void UnitAiMoonGuard::scan(const WorldInterface& world)
 {
-    pingTimer++;
-    if (pingTimer == 10)
+    scanCount++;
+    if (scanCount == SCAN_COUNT_MAX)
     {
+        printf("Scanning...\n");
         Vector3 ship_pos = getShip().getPosition();
         
-        nearbyShips = world.getShipIds(ship_pos, SCAN_DISTANCE*1000);
+        nearbyShips = world.getShipIds(ship_pos, SCAN_DISTANCE_SHIP);
         
         Vector3 position = ship_pos + (getShip().getVelocity() * 500.f);
-        nearbyRingParticles = world.getRingParticles(position, SCAN_DISTANCE);
+        nearbyRingParticles = world.getRingParticles(position, SCAN_DISTANCE_RING_PARTICLE);
         
         nearestPlanetoid = world.getNearestPlanetoidId(ship_pos);
         
-        pingTimer = 0;
+        scanCount = 0;
     }
 }
 
@@ -126,6 +137,7 @@ PhysicsObjectId UnitAiMoonGuard::getClosestShip(const WorldInterface& world)
     nearestShip = PhysicsObjectId::ID_NOTHING;
     for (int i = 0; i < nearbyShips.size(); i++)
     {
+        if (!world.isAlive(nearbyShips[i])) continue;
         if (nearbyShips[i].m_fleet == getShipId().m_fleet) continue;
         
         double temp = ship_pos.getDistanceSquared(world.getPosition(nearbyShips[i]));
@@ -135,7 +147,7 @@ PhysicsObjectId UnitAiMoonGuard::getClosestShip(const WorldInterface& world)
             nearestShip = nearbyShips[i];
         }
     }
-
+    
     return nearestShip;
 }
 
@@ -154,11 +166,45 @@ void UnitAiMoonGuard::shootAtShip(const WorldInterface& world, const PhysicsObje
     if (angle <= SHOOT_ANGLE_RADIANS_MAX)
     {
         getShipAi().markFireBulletDesired();
+        printf("\tShooting at (%f, %f, %f)\n", target_pos.x, target_pos.y, target_pos.z);
     };
+}
+
+Vector3 UnitAiMoonGuard::steerToRamTarget(const WorldInterface& world, const PhysicsObjectId& target)
+{
+    if (!world.isAlive(target))
+    {
+        return getShip().getVelocity();
+    }
+    
+    PhysicsObjectId planetoid_id     = world.getNearestPlanetoidId(getShip().getPosition());
+    Vector3         planetoid_center = world.getPosition(planetoid_id);
+    double          planetoid_radius = world.getRadius  (planetoid_id);
+    
+    Vector3 unit_pos = getShip().getPosition();
+    Vector3 target_pos = world.getPosition(target);
+    
+    //Vector3 desired_velocity = steeringBehaviour->seek(world, target);
+    Vector3 desired_velocity = steeringBehaviour->aim(world, target, Bullet::SPEED);
+    Vector3 v   = steeringBehaviour->avoid(world,
+                                           desired_velocity,
+                                           planetoid_center,
+                                           planetoid_radius,
+                                           PLANETOID_CLEARANCE,
+                                           PLANETOID_AVOID_DISTANCE);
+
+    //getShipAi().setDesiredVelocity(desired_velocity);
+    printf("\tRamming\n");
+    return v;
 }
 
 Vector3 UnitAiMoonGuard::avoidShips(const WorldInterface &world)
 {
+    if (nearestShip == PhysicsObjectId::ID_NOTHING)
+    {
+        return getShip().getVelocity();
+    }
+    
     Vector3 target_pos = world.getPosition(nearestShip);
     double target_radius = world.getRadius(nearestShip);
     
@@ -168,6 +214,8 @@ Vector3 UnitAiMoonGuard::avoidShips(const WorldInterface &world)
                                          target_radius,
                                          SHIP_CLEARANCE,
                                          SHIP_AVOID_DISTANCE);
+    //getShipAi().setDesiredVelocity(v);
+    printf("\tAvoiding Ships\n");
     return v;
 }
 
@@ -193,12 +241,20 @@ Vector3 UnitAiMoonGuard::avoidRingParticles(const WorldInterface& world)
             nearestParticle = nearbyRingParticles[i];
         }
     }
+    
+    double ringDensity = world.getRingDensity(ship_pos);
+    
     Vector3 v = steeringBehaviour->avoid(world,
                                          getShip().getVelocity(),
                                          nearestParticle.m_position,
                                          nearestParticle.m_radius,
                                          RING_PARTICLE_CLEARANCE,
                                          RING_PARTICLE_AVOID_DISTANCE);
+    //getShipAi().setDesiredVelocity(v);
+    
+    v = v / ringDensity;
+    
+    printf("Avoiding Ring Particles\n");
     return v;
 }
 
@@ -213,6 +269,8 @@ Vector3 UnitAiMoonGuard::avoidPlanetoids(const WorldInterface &world)
                                          planetoid_radius,
                                          PLANETOID_CLEARANCE,
                                          PLANETOID_AVOID_DISTANCE);
+    //getShipAi().setDesiredVelocity(v);
+    printf("Avoiding Planetoid\n");
     return v;
 }
 

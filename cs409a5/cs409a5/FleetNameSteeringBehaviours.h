@@ -9,7 +9,7 @@
 #ifndef RED_STEERING_BEHAVIOURS_H
 #define RED_STEERING_BEHAVIOURS_H
 
-#include "ObjLibrary/Vector3.h"
+#include "../../ObjLibrary/Vector3.h"
 
 #include "PhysicsObjectId.h"
 

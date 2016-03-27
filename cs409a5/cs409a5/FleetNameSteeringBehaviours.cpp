@@ -12,7 +12,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "ObjLibrary/Vector3.h"
+#include "../../ObjLibrary/Vector3.h"
 
 #include "TimeSystem.h"
 #include "PhysicsObjectId.h"
