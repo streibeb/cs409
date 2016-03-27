@@ -4,7 +4,7 @@
 //  Encapsulates a module for loading bmp files and converting
 //    them to 2D OpenGL textures.
 //
-//  This file is part of the ObjLibrary, by Richard Hamilton,
+//  This file is part of the ../../ObjLibrary, by Richard Hamilton,
 //    which is copyright Hamilton 2009-2015.
 //
 //  You may use these files for any purpose as long as you do
@@ -20,7 +20,7 @@
 //    remove this notice.  If you are only destributing compiled
 //    code, no credit is required.
 //
-//  A (theoretically) up-to-date version of the ObjLibrary can
+//  A (theoretically) up-to-date version of the ../../ObjLibrary can
 //    be found at:
 //  http://infiniplix.ca/resources/obj_library/
 //

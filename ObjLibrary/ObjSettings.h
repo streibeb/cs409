@@ -4,7 +4,7 @@
 //  A module to encapsulate the general settings for the OBJ
 //    library.
 //
-//  This file is part of the ObjLibrary, by Richard Hamilton,
+//  This file is part of the ../../ObjLibrary, by Richard Hamilton,
 //    which is copyright Hamilton 2009-2015.
 //
 //  You may use these files for any purpose as long as you do
@@ -20,7 +20,7 @@
 //    remove this notice.  If you are only destributing compiled
 //    code, no credit is required.
 //
-//  A (theoretically) up-to-date version of the ObjLibrary can
+//  A (theoretically) up-to-date version of the ../../ObjLibrary can
 //    be found at:
 //  http://infiniplix.ca/resources/obj_library/
 //
@@ -60,7 +60,7 @@
 
 
 //
-//  By default, the ObjLibrary only loads textures of type
+//  By default, the ../../ObjLibrary only loads textures of type
 //    ".bmp".  However, it can also load textures of type
 //    ".png".  To do this, you will need the following
 //    libraries:
@@ -72,8 +72,8 @@
 //  The assumed organization of files is as follows:
 //    glpng.c
 //    glpng.h
-//    ObjLibrary
-//      ObjLibrary library files
+//    ../../ObjLibrary
+//      ../../ObjLibrary library files
 //    png
 //      png library files
 //    zlib
@@ -99,8 +99,8 @@
 //  The assumed organization of files is as follows:
 //    glew.c
 //    glew.h
-//    ObjLibrary
-//      ObjLibrary library files
+//    ../../ObjLibrary
+//      ../../ObjLibrary library files
 //    wglew.c
 //
 //  To enable shader-based display, define the macro

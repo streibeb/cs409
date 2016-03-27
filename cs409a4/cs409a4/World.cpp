@@ -65,6 +65,8 @@ void World :: draw (const Vector3& camera_forward,
 	assert(camera_up.isNormal());
 	assert(camera_forward.isOrthogonal(camera_up));
     
+    drawSkybox();
+    
     // Draw saturn
     planet.draw();
     
@@ -102,7 +104,17 @@ void World :: draw (const Vector3& camera_forward,
 	mp_explosion_manager->draw(camera_forward, camera_up);
 }
 
-
+void World::drawSkybox() const
+{
+    const Vector3& center_position = player_ship.getCameraCoordinateSystem().getPosition();
+    
+    glDepthMask(GL_FALSE);
+    glPushMatrix();
+        glTranslated(center_position.x, center_position.y, center_position.z);
+        skybox.draw();
+    glPopMatrix();
+    glDepthMask(GL_TRUE);
+}
 
 void World :: init ()
 {

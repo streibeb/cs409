@@ -1,0 +1,15 @@
+#
+#  Bolt.mtl
+#
+
+newmtl bolt
+# solid colour, regardless of lighting
+illum 0
+Kd 1.00 0.75 0.00
+d 0.50
+
+newmtl bolt_enemy
+# solid colour, regardless of lighting
+illum 0
+Kd 0.00 0.75 1.00
+d 0.50

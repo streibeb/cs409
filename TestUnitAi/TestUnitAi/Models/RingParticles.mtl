@@ -1,0 +1,123 @@
+#
+#  RingParticles.mtl
+#
+
+newmtl ring_particleA
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleA.bmp
+
+newmtl ring_particleB
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleB.bmp
+
+newmtl ring_particleC
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleC.bmp
+
+newmtl ring_particleD
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleD.bmp
+
+newmtl ring_particleE
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleE.bmp
+
+newmtl ring_particleF
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleF.bmp
+
+newmtl ring_particleG
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleG.bmp
+
+newmtl ring_particleH
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleH.bmp
+
+newmtl ring_particleI
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleI.bmp
+
+newmtl ring_particleJ
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleJ.bmp
+
+newmtl ring_particleK
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleK.bmp
+
+newmtl ring_particleL
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleL.bmp
+
+newmtl ring_particleM
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleM.bmp
+
+newmtl ring_particleN
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleN.bmp
+
+newmtl ring_particleO
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleO.bmp
+
+newmtl ring_particleP
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleP.bmp
+
+newmtl ring_particleQ
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleQ.bmp
+
+newmtl ring_particleR
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleR.bmp
+
+newmtl ring_particleS
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleS.bmp
+
+newmtl ring_particleT
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd ring_particleT.bmp

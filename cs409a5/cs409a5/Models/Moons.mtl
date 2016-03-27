@@ -1,0 +1,64 @@
+#
+#  moons.mtl
+#
+
+newmtl moonA
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonA.bmp
+
+newmtl moonB
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonB.bmp
+
+newmtl moonC
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonC.bmp
+
+newmtl moonD
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonD.bmp
+
+newmtl moonE
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonE.bmp
+
+newmtl moonF
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonF.bmp
+
+newmtl moonG
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonG.bmp
+
+newmtl moonH
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonH.bmp
+
+newmtl moonI
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonI.bmp
+
+newmtl moonJ
+illum 1
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+map_Kd moonJ.bmp
+

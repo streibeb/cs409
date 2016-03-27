@@ -1,0 +1,12 @@
+#
+#  Missile.mtl
+#
+
+newmtl missile
+illum 2
+Ka 0.40 0.40 0.40
+Kd 0.60 0.60 0.60
+Ks 0.20 0.20 0.20
+Ns 10.00
+map_Ka Missile-Red.bmp
+map_Kd Missile-Red.bmp

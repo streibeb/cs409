@@ -1,9 +1,9 @@
-ObjLibrary Development Log
+../../ObjLibrary Development Log
 ==========================
 
 Copyright Richard Hamilton 2009-2015.
 
-This file is part of the ObjLibrary, by Richard Hamilton,
+This file is part of the ../../ObjLibrary, by Richard Hamilton,
   which is copyright Hamilton 2009-2015.
 
 You may use these files for any purpose as long as you do
@@ -19,7 +19,7 @@ If you are destributing the source files, you must not
   remove this notice.  If you are only destributing compiled
   code, no credit is required.
 
-A (theoretically) up-to-date version of the ObjLibrary can
+A (theoretically) up-to-date version of the ../../ObjLibrary can
   be found at:
 http://infiniplix.ca/resources/obj_library/
 
@@ -356,7 +356,7 @@ Released to CS809
 2014 November 17
 ----------------
 
-1. Clarified terms of use to allow authority figures (professors, employers, etc.) to limit the use of ObjLibrary in their area of authority (assignments, company projects, etc.).
+1. Clarified terms of use to allow authority figures (professors, employers, etc.) to limit the use of ../../ObjLibrary in their area of authority (assignments, company projects, etc.).
 2. Added getComponentX, getComponentY, and getComponentZ to Vector2 and Vector3 that make copies with all but one element set to 0.0.
 3. Added getComponentXY, getComponentXZ, and getComponentYZ to Vector3 that make copies with all but two elements set to 0.0.
 4. Improved documentation for Vector2 and Vedctor3 classes to appear for all copies of similar functions (e.g. isUnit and isNormal).  Achieved by copying documentation for each function.
@@ -428,7 +428,7 @@ Released to CS809
 3. Improved filename validity checking for ObjModel: paths without a filename at the end are now detected.
 4. Added isLoadedSuccessfully function to MtlLibrary to determine if the MtlLibrary was successfully loaded from a file.
 5. Added makeEmpty function to MtlLibrary to transform an existing MtlLibrary into the state created by the default constructor.
-6. Improved a few comments in ObjLibrary.h
+6. Improved a few comments in ../../ObjLibrary.h
 7. Texture usage priority order is now diffuse, ambient, specular.
 8. Added an option for file path propagation (enabled by default).  If your OBJ and MTL files already include the relative path from your working directory, call ObjModel::setPathPropagation(false); before loading anything to restore the old behaviour.
 9. Default file names are now in lowercase and include file extension.
@@ -472,7 +472,7 @@ Released to CS809
 --------------
 
 1. Illumination mode 0 (constant illumination and lighting disabled) now uses ambient + diffuse instead of ambient + diffuse / 2.  Models should no longer appear at half brightness.
-2. Improved spacing in MtlLibrary.h and ObjLibrary.h.
+2. Improved spacing in MtlLibrary.h and ../../ObjLibrary.h.
 3. Added get/set for texture coordinates as a Vector2 in ObjModel.
 4. Added drawMaterial function to ObjModel that takes a string as a parameter and searches current material files.  Also a variaent where you specifiy a material file.
 5. Added functions to activate and deactive materials directly from MtlLibrary.
@@ -519,8 +519,8 @@ Released to CS809
 2015 September 23
 -----------------
 
-1. Fixed isMeshMaterial is ObjLibrary to return true if there is a material and false otherwise.  Was the other way around.
-2. Added versions of print, printMtlLibraries, and printBadMaterials to ObjLibrary that take a logfile and a logging stream as parameters.
+1. Fixed isMeshMaterial is ../../ObjLibrary to return true if there is a material and false otherwise.  Was the other way around.
+2. Added versions of print, printMtlLibraries, and printBadMaterials to ../../ObjLibrary that take a logfile and a logging stream as parameters.
 3. Clarified documentation for setPolylineVertexTextureCoordinates, setFaceVertexTextureCoordinates, and setFaceVertexNormal to explicitly state the effect of NO_TEXTURE_COORDINATES and NO_NORMAL as arguments.
 
 

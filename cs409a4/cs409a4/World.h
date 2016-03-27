@@ -1034,6 +1034,8 @@ private:
 //
     
     void resolveBulletCollision(Bullet& b, Ship& obj);
+    
+    void drawSkybox() const;
 };
 
 
