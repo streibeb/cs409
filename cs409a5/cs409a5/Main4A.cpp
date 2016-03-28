@@ -143,7 +143,7 @@ void update()
     
     if (key_pressed[' '])
     {
-        if (world->player_ship.isReloaded())
+        if (world->player_ship.isAlive() && world->player_ship.isReloaded())
         {
             world->addBullet(world->player_ship.getPosition(),
                             world->player_ship.getForward(),
