@@ -115,7 +115,7 @@ PhysicsObjectId World :: getNearestPlanetoidId (const Vector3& position) const
             temp = min_distance;
         }
     }
-    return PhysicsObjectId::ID_NOTHING;
+    return moons[index].getId();
 }
 
 vector<PhysicsObjectId> World :: getShipIds (const Vector3& sphere_center,
@@ -124,6 +124,16 @@ vector<PhysicsObjectId> World :: getShipIds (const Vector3& sphere_center,
     assert(sphere_radius >= 0.0);
     
     vector<PhysicsObjectId> list;
+    
+    // Playership
+    if (player_ship.isAlive())
+    {
+        double temp = sphere_center.getDistanceSquared(player_ship.getPosition());
+        if (temp < sphere_radius * sphere_radius)
+        {
+            list.push_back(player_ship.getId());
+        }
+    }
     for (int i = 0; i < SHIP_COUNT; i++)
     {
         Ship s = ships[i];
@@ -321,7 +331,7 @@ bool World :: isPlanetoidMoon (const PhysicsObjectId& id) const
     assert(id.m_type == PhysicsObjectId::TYPE_PLANETOID);
     assert(isAlive(id));
     
-    return (getPlanetId() == id);
+    return (getPlanetId() != id);
 }
 
 double World :: getPlanetoidRingDistance (const PhysicsObjectId& id) const

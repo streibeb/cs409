@@ -269,7 +269,6 @@ void Ship :: update (WorldInterface& r_world)
                 rotateTowards(desired_velocity.getNormalized(), theta);
             }
             
-            rotateTowards(desired_velocity, max_rotation_rate);
             double delta = max_acceleration * TimeSystem::getFrameDuration();
             if(delta > 0.0)
             {
@@ -280,13 +279,14 @@ void Ship :: update (WorldInterface& r_world)
                 {
                     currentSpeed += delta;
                     if (currentSpeed > desiredSpeed) currentSpeed = desiredSpeed;
+                    setSpeed(currentSpeed);
                 }
                 else if (currentSpeed > desiredSpeed)
                 {
                     currentSpeed -= delta;
                     if (currentSpeed < desiredSpeed) currentSpeed = desiredSpeed;
+                    setSpeed(currentSpeed);
                 }
-                setSpeed(currentSpeed);
             }
         }
         

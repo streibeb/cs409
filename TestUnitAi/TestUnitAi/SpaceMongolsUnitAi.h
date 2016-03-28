@@ -64,6 +64,7 @@ namespace SpaceMongols
         std::vector<RingParticleData> nearbyRingParticles;
         PhysicsObjectId nearestPlanetoid;
         PhysicsObjectId nearestShip;
+        PhysicsObjectId nearestEnemyShip;
         int scanCount;
         
     public:
@@ -208,14 +209,19 @@ namespace SpaceMongols
         
     private:
         void scan (const WorldInterface& world);
-        PhysicsObjectId getClosestShip(const WorldInterface& world);
+        void getClosestShip(const WorldInterface& world);
+        void getClosestEnemyShip(const WorldInterface& world);
         void shootAtShip(const WorldInterface& world,
                          const PhysicsObjectId& target);
-        Vector3 steerToRamTarget(const WorldInterface& world,
-                                 const PhysicsObjectId& target);
-        Vector3 avoidShips(const WorldInterface& world);
-        Vector3 avoidPlanetoids(const WorldInterface& world);
-        Vector3 avoidRingParticles(const WorldInterface& world);
+        Vector3 chargeAtTarget(const WorldInterface& world,
+                               const PhysicsObjectId& target,
+                               const Vector3& orig_velocity);
+        Vector3 avoidShips(const WorldInterface& world,
+                           const Vector3& orig_velocity);
+        Vector3 avoidPlanetoids(const WorldInterface& world,
+                                const Vector3& orig_velocity);
+        Vector3 avoidRingParticles(const WorldInterface& world,
+                                   const Vector3& orig_velocity);
         
     private:
         //

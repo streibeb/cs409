@@ -142,8 +142,8 @@ void Ship :: setupCamera () const
 	const Vector3& camera_position = camera.getPosition();
 	const Vector3& camera_up       = camera.getUp();
 
-	Vector3 look_at = camera_position + camera.getForward();
-
+    Vector3 look_at = camera_position + camera.getForward();
+	
 	gluLookAt(camera_position.x, camera_position.y, camera_position.z,
 	          look_at.x,         look_at.y,         look_at.z,
 	          camera_up.x,       camera_up.y,       camera_up.z);
@@ -151,7 +151,7 @@ void Ship :: setupCamera () const
 
 CoordinateSystem Ship :: getCameraCoordinateSystem () const
 {
-	const Vector3& forward = getForward();
+    const Vector3& forward = getForward();
 	const Vector3& up      = getUp();
 
 	Vector3 camera_at = getPosition() +
@@ -263,13 +263,12 @@ void Ship :: update (WorldInterface& r_world)
     {
         if (!desired_velocity.isZero())
         {
-            double theta = max_rotation_rate * TimeSystem::getFrameDuration();
-            if(theta > 0.0)
+            double deltaRotation = max_rotation_rate * TimeSystem::getFrameDuration();
+            if(deltaRotation > 0.0)
             {
-                rotateTowards(desired_velocity.getNormalized(), theta);
+                rotateTowards(desired_velocity.getNormalized(), deltaRotation);
             }
             
-            rotateTowards(desired_velocity, max_rotation_rate);
             double delta = max_acceleration * TimeSystem::getFrameDuration();
             if(delta > 0.0)
             {
@@ -280,13 +279,14 @@ void Ship :: update (WorldInterface& r_world)
                 {
                     currentSpeed += delta;
                     if (currentSpeed > desiredSpeed) currentSpeed = desiredSpeed;
+                    setSpeed(currentSpeed);
                 }
                 else if (currentSpeed > desiredSpeed)
                 {
                     currentSpeed -= delta;
                     if (currentSpeed < desiredSpeed) currentSpeed = desiredSpeed;
+                    setSpeed(currentSpeed);
                 }
-                setSpeed(currentSpeed);
             }
         }
         
@@ -374,7 +374,9 @@ void Ship::markFireMissileDesired (const PhysicsObjectId& id_target)
 
 void Ship::runAi (const WorldInterface& world)
 {
-    if (isUnitAiSet()) unitAi->run(world);
+    assert (isUnitAiSet());
+    
+    unitAi->run(world);
 }
 
 void Ship::setUnitAi (UnitAiSuperclass* p_unit_ai)

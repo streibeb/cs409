@@ -15,6 +15,7 @@
 #include "ExplosionManager.h"
 #include "WorldInterface.h"
 #include "World.h"
+#include "SpaceMongolsUnitAi.h"
 
 using namespace std;
 
@@ -180,9 +181,13 @@ void World :: init ()
                             * (moonInfo[moonIndex].radius + 500.0);
             
             ships[i].initPhysics(s_id, pos, 10.f, Vector3::getRandomUnitVector(), ship_dl, 10.f);
+            ships[i].setUnitAi(new SpaceMongols::UnitAiMoonGuard(ships[i],
+                                                                 *this,
+                                                                 moons[moonIndex].getId()));
             ships[i].setHealth(1);
             ships[i].setAmmo(0);
-            ships[i].setSpeed(0.f);
+            ships[i].setSpeed(250.f);
+            ships[i].setManeuverability(250.0f, 250.0f, 0.33 * M_PI);
         }
         
         // Player Ship Init
@@ -226,16 +231,14 @@ void World :: updateAll ()
 	assert(isInitialized());
     
     player_ship.update(*this);
+    Vector3 position = player_ship.getPosition() + (player_ship.getForward() * 500.f);
     
-    vector<PhysicsObjectId> ship_list = getShipIds(player_ship.getPosition(), 1000.0);
+    vector<PhysicsObjectId> ship_list = getShipIds(player_ship.getPosition(), 10000.0);
     for (int i = 0; i < SHIP_COUNT; i++)
     {
         if (!ships[i].isAlive()) continue;
         
-        if (std::find(ship_list.begin(), ship_list.end(), ships[i].getId()) != ship_list.end())
-        {
-            ships[i].runAi(*this);
-        }
+        ships[i].runAi(*this);
         ships[i].update(*this);
     }
     
@@ -353,6 +356,18 @@ void World::handleBulletCollisions(Bullet& bullet)
         }
     }
     
+    // Player Ship
+    if (player_ship.isAlive() && !player_ship.isDying()) {
+        if (GeometricCollisions::sphereVsSphere(bullet.getPosition(),
+                                                0.0f,
+                                                player_ship.getPosition(),
+                                                player_ship.getRadius()))
+        {
+            resolveBulletCollision(bullet, player_ship);
+            //printf("Player Health: %f\n", player_ship.getHealth());
+        }
+    }
+    
     // Ships
     for (int j = 0; j < SHIP_COUNT; j++)
     {
@@ -366,7 +381,6 @@ void World::handleBulletCollisions(Bullet& bullet)
             resolveBulletCollision(bullet, ships[j]);
         }
     }
-    
 }
 
 void World::resolvePlanetoidCollision(PhysicsObject& obj)
@@ -384,6 +398,8 @@ void World::resolveShipCollision(Ship& obj1, Ship& obj2)
 
 void World::resolveBulletCollision(Bullet& b, Ship& obj)
 {
+    if (b.getSourceId() == obj.getId()) return;
+    
     b.markDead(false);
     obj.addHealth(-1.0f);
 }
